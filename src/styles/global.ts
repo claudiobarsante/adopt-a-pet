@@ -1,6 +1,11 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+
+:root{
+  --color-primary:#cc6e00;
+}
+
 * {
   margin:0;
   padding:0;
@@ -15,9 +20,21 @@ html,body, #__next{
   height:100%;
 }
 
-body{
-  font-family:--apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-  Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+body,
+input,
+textarea,
+select,
+button {
+	font: 400 1.6rem 'Montserrat', sans-serif;
+}
+
+button {
+	cursor: pointer;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
 `;
