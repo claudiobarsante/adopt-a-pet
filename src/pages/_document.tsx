@@ -1,6 +1,3 @@
-/*This is as special file to run styled components on Nextjs - SSR
-refer to documentation https://github.com/vercel/next.js/tree/master/examples/with-styled-components
-*/
 import Document, {
   Html,
   Head,
@@ -40,7 +37,18 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="pt-BR">
-        <Head />
+        <Head>
+          <link
+            rel="stylesheet"
+            id="montserrat-css"
+            href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
+          />
+          <link
+            rel="stylesheet"
+            id="open-sans-css"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />

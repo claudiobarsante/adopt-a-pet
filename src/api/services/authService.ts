@@ -17,7 +17,7 @@ export const signUpUserService = ({
   return apiClient({
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
-    url: `${baseUrl}/api/account/register`,
+    url: `${baseUrl}/v1/account/register`,
     data: JSON.stringify({ nickname, email, password, confirmPassword })
   });
 };
