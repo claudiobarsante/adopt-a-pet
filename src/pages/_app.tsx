@@ -10,9 +10,11 @@ function App({ Component, pageProps }: AppProps) {
         <title>Adote um Pet</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/img/icon-512.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+
         <link
+          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
           rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i"
         />
 
         <meta name="theme-color" content="#06092B" />
