@@ -1,7 +1,9 @@
 import Navbar from 'components/Nav-Bar';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import Head from 'next/head';
+import React from 'react';
 import GlobalStyles from 'styles/global';
+import { AuthProvider } from 'context/auth';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
 
         <link
-          href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet"
         />
 
@@ -24,8 +26,10 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
-      <Navbar />
-      <Component {...pageProps} />
+      <AuthProvider>
+        <Navbar />
+        <Component {...pageProps} />
+      </AuthProvider>
     </>
   );
 }

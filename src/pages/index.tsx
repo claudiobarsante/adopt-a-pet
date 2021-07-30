@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import picHome from '/public/img/right-side.png';
-import Button from 'components/Button/index';
+
 export default function Home() {
   return (
     <>
-      <Button>Log in</Button>
+      <h1>Home</h1>
       {/* <Image
         //key={`photo-${index}`}
         src={picHome}

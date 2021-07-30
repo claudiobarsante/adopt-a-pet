@@ -9,13 +9,13 @@ export const Container = styled.button`
   width: 16rem;
 
   background: var(--color-primary);
-  border-radius: 4rem;
+  border-radius: 5rem;
   border: 0;
   color: var(--color-button-text);
   font-size: 1.8rem;
   font-weight: 400;
   //letter-spacing: 0.2rem;
-  //margin-top: 2.4rem;
+  //margin-top: 10.4rem;
   padding: 3rem;
   text-align: center;
 

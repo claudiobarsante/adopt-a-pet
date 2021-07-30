@@ -11,6 +11,10 @@ const GlobalStyles = createGlobalStyle`
   --color-primary:#000000;
   --color-background-card:#fbf7f4;
   --color-button-text:#fff;
+  --color-grey:#f3f2f2;
+  --color-success: #73bd73;
+  --color-error:#c53030;
+  --color-grey-hard:#666360;
 
 }
 
@@ -26,6 +30,8 @@ html{
 
 html,body, #__next{
   height:100%;
+  margin-left:3%;
+  margin-right:3%;
 }
 
 body,
@@ -34,7 +40,7 @@ textarea,
 select,
 button {
 
-font: 400 1.6rem 'Roboto', sans-serif;
+font: 400 1.6rem 'Jost', sans-serif;
 }
 
 button {

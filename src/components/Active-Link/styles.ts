@@ -6,7 +6,7 @@ export const StyledLink = styled.a`
   font-weight: 600;
 
   &:hover {
-    text-shadow: 0px 0px 0.6px black;
+    text-shadow: 0px 0px 0.1px black;
     cursor: pointer;
   }
 

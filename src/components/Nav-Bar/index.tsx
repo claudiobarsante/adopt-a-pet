@@ -1,19 +1,24 @@
 import ActiveLink from 'components/Active-Link';
+import Button from 'components/Button';
 import React from 'react';
+import Menu from './Menu';
 import * as S from './styles';
 
 const Navbar = () => {
   return (
     <S.Header>
-      <S.Content>
+      <S.LogoContainer>
         <ActiveLink href="/" name="Página Inicial" />
-        <S.Nav>
-          <ActiveLink href="/" name="Pets" />
-          <ActiveLink href="/" name="Serviços" />
-          <ActiveLink href="/" name="Artigos" />
-          <ActiveLink href="/" name="Histórias de Sucesso" />
-        </S.Nav>
-      </S.Content>
+      </S.LogoContainer>
+      <S.Nav>
+        <Menu />
+      </S.Nav>
+      <S.SignUpContainer>
+        <ActiveLink href="/account/signup" name="Cadastre-se" />
+      </S.SignUpContainer>
+      <S.LoginContainer>
+        <Button>Log in</Button>
+      </S.LoginContainer>
     </S.Header>
   );
 };
