@@ -6,7 +6,7 @@ import { useAuth } from 'context/auth';
 // -- Services
 import { SignUpInfo } from 'api/services/authService';
 // -- Components
-import SignUpForm from 'components/Sign-Up';
+import SignUpForm from 'components/Sign-Up-Form';
 // -- Helpers
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 

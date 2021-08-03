@@ -1,18 +1,22 @@
 import { getAddressInfo } from 'api/services/viaCepService';
 import Input from 'components/Input';
-import { Formik, Form, Field, ErrorMessage, useFormikContext } from 'formik';
-import React, { FormEvent, useCallback, useState } from 'react';
+import { Form, Field, ErrorMessage, useFormikContext } from 'formik';
+import React, { FormEvent, useCallback, useRef, useState } from 'react';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
+
 const SignUpForm = () => {
   const { handleChange, errors, values, setFieldValue } = useFormikContext();
-  const [teste, setTeste] = useState('');
+
   const handleGetInfo = useCallback(async (value: string, event: FormEvent) => {
     event.preventDefault();
     console.log('value', value);
     const response = await getAddressInfo(value);
-    console.log('response', response);
-    setTeste('foi');
+    if (teste.current) {
+      teste.current.value = 'aaaaa';
+    }
   }, []);
+
+  const teste = useRef<HTMLInputElement>(null);
 
   return (
     <Form>
@@ -24,17 +28,19 @@ const SignUpForm = () => {
         icon={AiOutlineUser}
         maxLength={50}
         label="Cep"
-        // onChange={handleChange('zipcode')}
+        inputRef={null}
+        onChange={handleChange('zipcode')}
       />
       <Input
         name="city"
+        inputRef={teste}
         type="text"
         placeholder="Cidade"
         error={''}
         icon={AiOutlineUser}
         maxLength={50}
         label="Cidade"
-        value={teste}
+        onChange={handleChange('city')}
       />
       {/* <Input
       name="neighborhood"
