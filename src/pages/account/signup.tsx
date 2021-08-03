@@ -1,17 +1,18 @@
-import React, { useCallback } from 'react';
+import React, { FormEvent, useCallback } from 'react';
 import { useRouter } from 'next/dist/client/router';
-import { useForm } from 'react-hook-form';
+
 import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { ErrorMessage } from '@hookform/error-message';
+import { Formik, Form, Field, ErrorMessage, useField } from 'formik';
+
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 
 import { useAuth } from 'context/auth';
 //Services
 import { SignUpInfo } from 'api/services/authService';
 import Input from 'components/Input';
+import Test from 'components/Input/test';
 
-const SignInSchema = yup.object().shape({
+const SignUpSchema = yup.object().shape({
   email: yup
     .string()
     .required('E-mail é um campo obrigatório')
@@ -40,18 +41,10 @@ const SignInSchema = yup.object().shape({
 });
 
 const SignUp = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<SignUpInfo>({
-    resolver: yupResolver(SignInSchema),
-    mode: 'onBlur'
-  });
   const router = useRouter();
   const { signUp } = useAuth();
 
-  const submitForm = async ({
+  const handleSubmit = async ({
     nickname,
     password,
     email,
@@ -77,29 +70,54 @@ const SignUp = () => {
     });
   };
 
+  const INITIAL_VALUES = {
+    nickname: '',
+    password: '',
+    email: '',
+    confirmPassword: '',
+    phone: '',
+    zipcode: '',
+    neighborhood: '',
+    city: '',
+    state: '',
+    code: ''
+  };
+  const handleGetInfo = (value: string, event: FormEvent) => {
+    event.preventDefault();
+    console.log('value', value);
+  };
+
   return (
     <>
       <h1>Cadastro</h1>
-      <form onSubmit={handleSubmit(submitForm)}>
-        <Input
-          id="email"
-          type="text"
-          placeholder="E-mail do usuário"
-          {...register('email', {
-            required: 'Required'
-          })}
-          error={errors.email?.message}
-          icon={AiOutlineUser}
-          maxLength={50}
-        />
-        <ErrorMessage
-          name="email"
-          errors={errors}
-          render={({ message }) => <p id="test-email-error">{message}</p>}
-        />
-      </form>
+      <Formik
+        initialValues={INITIAL_VALUES}
+        validationSchema={SignUpSchema}
+        onSubmit={(values) => handleSubmit(values)}
+      >
+        {(props) => (
+          <Form>
+            <Input
+              name="nickname"
+              type="text"
+              placeholder="Apelido"
+              error={props.errors.nickname}
+              icon={AiOutlineUser}
+              maxLength={50}
+            />
+            <button
+              onClick={(event) => handleGetInfo(props.values.nickname, event)}
+            >
+              get it{' '}
+            </button>
+          </Form>
+        )}
+      </Formik>
     </>
   );
 };
 
 export default SignUp;
+function qwe(nickname: string, qwe: any): void {
+  throw new Error('Function not implemented.');
+}
