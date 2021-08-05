@@ -1,6 +1,6 @@
 import * as yup from 'yup';
-
-export const INITIAL_VALUES = {
+import { SignUpInfo } from 'api/services/authService';
+export const INITIAL_VALUES: SignUpInfo = {
   nickname: '',
   password: '',
   email: '',
@@ -32,9 +32,9 @@ export const SignUpSchema = yup.object().shape({
     .max(50, 'Tamanho máxio permitido 50 caracteres'),
   city: yup
     .string()
-    .required('Por favor informe a cidade')
-    .min(5, 'Tamanho mínimo de 5')
-    .max(10, 'Tamanho máxio permitido 100 caracteres'),
+    //  .required('Por favor informe a cidade')
+    // .min(5, 'Tamanho mínimo de 5')
+    .max(50, 'Tamanho máxio permitido 100 caracteres'),
   state: yup
     .string()
     .required('Por favor informe o Estado')

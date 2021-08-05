@@ -13,11 +13,6 @@ import { toast, Slide } from 'react-toastify';
 const SignUpForm = () => {
   const router = useRouter();
   const { signUp } = useAuth();
-  // -- refs
-  const cityInput = useRef<HTMLInputElement>(null);
-  const neighborhoodInput = useRef<HTMLInputElement>(null);
-  const stateInput = useRef<HTMLInputElement>(null);
-  const codeInput = useRef<HTMLInputElement>(null);
 
   // -- Functions
   const handleSubmit = async ({
@@ -46,35 +41,45 @@ const SignUpForm = () => {
     });
   };
 
-  const handleGetInfo = useCallback(async (value: string, event: FormEvent) => {
-    event.preventDefault();
+  const handleGetInfo = useCallback(
+    async (
+      setFieldValue: (
+        field: string,
+        value: any,
+        shouldValidate?: boolean
+      ) => void,
+      value: string,
+      event: FormEvent
+    ) => {
+      event.preventDefault();
 
-    try {
-      const response = await getAddressInfo(value);
-      const { bairro, localidade, uf } = response.data;
+      try {
+        const response = await getAddressInfo(value);
+        const { bairro, localidade, uf } = response.data;
 
-      // setFieldValue('city', '123');
-      if (codeInput.current) codeInput.current.value = uf;
-      if (neighborhoodInput.current) neighborhoodInput.current.value = bairro;
-      if (cityInput.current) cityInput.current.value = localidade;
-      if (stateInput.current) stateInput.current.value = BRAZIL_STATES[uf];
-    } catch (error) {
-      // todo: why Toast is not working ?
-      toast('Wow so easy!');
-      console.log('error ', error);
-      const MESSAGE =
-        'Ocorreu um erro ao tentar buscar as informações do seu cep';
-      toast.error(`sddfsdfd`, {
-        autoClose: 5000,
-        closeOnClick: true,
-        draggable: true,
-        hideProgressBar: false,
-        pauseOnHover: true,
-        position: 'top-right',
-        transition: Slide
-      });
-    }
-  }, []);
+        setFieldValue('code', uf, false);
+        setFieldValue('neighborhood', bairro, false);
+        setFieldValue('city', localidade, false);
+        setFieldValue('state', BRAZIL_STATES[uf], false);
+      } catch (error) {
+        // todo: why Toast is not working ?
+        toast('Wow so easy!');
+        console.log('error ', error);
+        const MESSAGE =
+          'Ocorreu um erro ao tentar buscar as informações do seu cep';
+        toast.error(`sddfsdfd`, {
+          autoClose: 5000,
+          closeOnClick: true,
+          draggable: true,
+          hideProgressBar: false,
+          pauseOnHover: true,
+          position: 'top-right',
+          transition: Slide
+        });
+      }
+    },
+    []
+  );
 
   return (
     <>
@@ -93,7 +98,6 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="Apelido"
-              inputRef={null}
             />
             <Input
               name="email"
@@ -102,7 +106,6 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="email"
-              inputRef={null}
             />
             <Input
               name="password"
@@ -111,7 +114,6 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="Senha"
-              inputRef={null}
             />
             <Input
               name="confirmPassword"
@@ -120,7 +122,6 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="Apelido"
-              inputRef={null}
             />
             <Input
               name="phone"
@@ -129,7 +130,6 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="Telefone"
-              inputRef={null}
             />
 
             <Input
@@ -139,12 +139,10 @@ const SignUpForm = () => {
               icon={AiOutlineUser}
               maxLength={50}
               label="Cep"
-              inputRef={null}
             />
 
             <Input
               name="city"
-              inputRef={cityInput}
               type="text"
               placeholder="Cidade"
               icon={AiOutlineUser}
@@ -154,7 +152,6 @@ const SignUpForm = () => {
 
             <Input
               name="neighborhood"
-              inputRef={neighborhoodInput}
               type="text"
               placeholder="Bairro"
               icon={AiOutlineUser}
@@ -163,7 +160,6 @@ const SignUpForm = () => {
             />
 
             <Input
-              inputRef={stateInput}
               name="state"
               type="text"
               placeholder="Estado"
@@ -173,16 +169,20 @@ const SignUpForm = () => {
             />
             <Input
               name="code"
-              inputRef={codeInput}
               type="text"
               placeholder="UF"
               icon={AiOutlineUser}
               maxLength={50}
               label="UF"
             />
-            <button onClick={(event) => handleGetInfo(values.zipcode, event)}>
+            <button
+              onClick={(event) =>
+                handleGetInfo(setFieldValue, values.zipcode, event)
+              }
+            >
               get it{' '}
             </button>
+
             <button type="reset">Reset</button>
             <button type="submit">Submit</button>
           </Form>
