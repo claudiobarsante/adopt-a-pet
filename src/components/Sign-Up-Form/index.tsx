@@ -1,3 +1,4 @@
+import { SignUpInfo } from 'api/services/authService';
 import { getAddressInfo } from 'api/services/viaCepService';
 import Input from 'components/Input';
 import { Form, Field, ErrorMessage, useFormikContext } from 'formik';
@@ -5,43 +6,60 @@ import React, { FormEvent, useCallback, useRef, useState } from 'react';
 import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
 
 const SignUpForm = () => {
-  const { handleChange, errors, values, setFieldValue } = useFormikContext();
+  const {
+    handleChange,
+    errors,
+    values,
+    touched
+  } = useFormikContext<SignUpInfo>();
+
+  const cityInput = useRef<HTMLInputElement>(null);
+  const neighborhoodInput = useRef<HTMLInputElement>(null);
+  const stateInput = useRef<HTMLInputElement>(null);
+  const codeInput = useRef<HTMLInputElement>(null);
 
   const handleGetInfo = useCallback(async (value: string, event: FormEvent) => {
     event.preventDefault();
     console.log('value', value);
     const response = await getAddressInfo(value);
-    if (teste.current) {
-      teste.current.value = 'aaaaa';
+    const { bairro, localidade, uf } = response.data;
+
+    console.log('response', response);
+    //const parsedResponse = JSON.parse(response.data);
+    //console.log('parsedResponse', parsedResponse);
+    if (cityInput.current) {
+      cityInput.current.value = localidade;
     }
   }, []);
 
-  const teste = useRef<HTMLInputElement>(null);
-
+  console.log('city ', touched.city);
   return (
     <Form>
       <Input
         name="zipcode"
         type="text"
         placeholder="Cep"
-        error={'error'}
+        error={!!errors.zipcode === touched.zipcode}
         icon={AiOutlineUser}
         maxLength={50}
         label="Cep"
         inputRef={null}
         onChange={handleChange('zipcode')}
       />
+      <ErrorMessage name="zipcode" />
       <Input
         name="city"
-        inputRef={teste}
+        inputRef={cityInput}
         type="text"
         placeholder="Cidade"
-        error={''}
+        error={!!errors.city === touched.city}
         icon={AiOutlineUser}
-        maxLength={50}
+        maxLength={10}
         label="Cidade"
         onChange={handleChange('city')}
       />
+      <ErrorMessage name="city" />
+
       {/* <Input
       name="neighborhood"
       type="text"
@@ -51,15 +69,7 @@ const SignUpForm = () => {
       maxLength={50}
       label="Bairro"
     />
-    <Input
-      name="city"
-      type="text"
-      placeholder="Cidade"
-      error={props.errors.city}
-      icon={AiOutlineUser}
-      maxLength={50}
-      label="Cidade"
-    />
+
     <Input
       name="state"
       type="text"

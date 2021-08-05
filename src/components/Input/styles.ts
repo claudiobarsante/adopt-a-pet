@@ -18,12 +18,12 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   margin-top: 1.9rem;
 
-  ${(props) =>
+  /* ${(props) =>
     props.isFocused &&
     css`
       border: 1px solid var(--color-mustard);
       transition: border-color 2s, color 2s;
-    `}
+    `} */
 
   ${(props) =>
     props.isErrored &&
@@ -32,6 +32,10 @@ export const Container = styled.div<ContainerProps>`
       transition: border-color 2s, color 2s;
     `}
 
+   &:focus-within {
+    border: 1px solid var(--color-mustard);
+    transition: border-color 2s, color 2s;
+   }
 
   input {
     background: transparent;
@@ -44,7 +48,7 @@ export const Container = styled.div<ContainerProps>`
     &::placeholder {
       color: var(--color-grey-hard);
     }
-  }
+
 
   svg {
     margin-right: 1.6rem;
