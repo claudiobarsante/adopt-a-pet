@@ -1,43 +1,19 @@
-import React, { useCallback, useState, InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { IconBaseProps } from 'react-icons';
-
 // -- Styles
 import * as S from './styles';
-import { ErrorMessage, Field, useField } from 'formik';
+import { ErrorMessage, useField } from 'formik';
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   type: string;
-  //inputRef: any;
-  // error: boolean;
+  inputRef: any;
   icon?: React.ComponentType<IconBaseProps>; //to receive a component as property
   //and to add the properties from react-icons, must pass type as IconBaseProps
 }
 
-const Input = ({
-  name,
-  label,
-  // error,
-  // inputRef,
-  icon: Icon,
-  ...rest
-}: Props) => {
-  const [isFocused, setIsFocused] = useState(false);
-
+const Input = ({ name, label, inputRef, icon: Icon, ...rest }: Props) => {
   const [field, meta] = useField(name);
-
-  const handleOnFocus = useCallback(() => {
-    setIsFocused(true);
-  }, []);
-
-  // const handleOnBlur = useCallback(() => {
-  //   setIsFocused(false);
-  // }, []);
-  function handleBlur(e) {
-    field.onBlur(e);
-
-    console.log('passei');
-  }
 
   console.log('field', field, 'meta', meta);
 
@@ -46,16 +22,10 @@ const Input = ({
   return (
     <>
       <label htmlFor={name}>{label}</label>
-      <S.Container isErrored={error} isFocused={isFocused}>
+      <S.Container isErrored={error}>
         {Icon && <Icon size={24} />}
 
-        <input
-          //ref={inputRef}
-          onFocus={handleOnFocus}
-          // onBlur={(e) => handleBlur(e)}
-          {...field}
-          {...rest}
-        />
+        <input ref={inputRef} {...field} {...rest} />
       </S.Container>
       <ErrorMessage name={field.name} />
     </>

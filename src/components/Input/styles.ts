@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 type ContainerProps = {
-  isFocused: boolean;
   isErrored: boolean;
 };
 
@@ -18,13 +17,6 @@ export const Container = styled.div<ContainerProps>`
   align-items: center;
   margin-top: 1.9rem;
 
-  /* ${(props) =>
-    props.isFocused &&
-    css`
-      border: 1px solid var(--color-mustard);
-      transition: border-color 2s, color 2s;
-    `} */
-
   ${(props) =>
     props.isErrored &&
     css`
@@ -35,6 +27,10 @@ export const Container = styled.div<ContainerProps>`
    &:focus-within {
     border: 1px solid var(--color-mustard);
     transition: border-color 2s, color 2s;
+
+    svg{
+      color: var(--color-mustard);
+    }
    }
 
   input {
@@ -52,6 +48,6 @@ export const Container = styled.div<ContainerProps>`
 
   svg {
     margin-right: 1.6rem;
-    color: var(--color-mustard);
+   // color: var(--color-mustard);
   }
 `;
