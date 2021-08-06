@@ -1,22 +1,28 @@
+import React, { FormEvent, useCallback } from 'react';
+import { Formik, Form } from 'formik';
+import { toast, Slide } from 'react-toastify';
+import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
+// -- Services
 import { SignUpInfo } from 'api/services/authService';
 import { getAddressInfo } from 'api/services/viaCepService';
+// -- Components
 import Input from 'components/Input';
-import { BRAZIL_STATES } from 'helpers/utils';
-import { Formik, Form } from 'formik';
-import React, { FormEvent, useCallback, useRef } from 'react';
-import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
-import { useRouter } from 'next/dist/client/router';
+// -- Hooks
 import { useAuth } from 'context/auth';
+// -- Helpers
+import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
-import { toast, Slide } from 'react-toastify';
 
 type GetInfoParams = {
-  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
+  setFieldValue: (
+    field: string,
+    value: unknown,
+    shouldValidate?: boolean
+  ) => void;
   value: string;
   event: FormEvent;
 };
 const SignUpForm = () => {
-  const router = useRouter();
   const { signUp } = useAuth();
 
   // -- Functions
@@ -152,7 +158,7 @@ const SignUpForm = () => {
             />
             <button
               onClick={(event) =>
-                handleGetInfo(setFieldValue, values.zipcode, event)
+                handleGetInfo({ setFieldValue, value: values.zipcode, event })
               }
             >
               get it{' '}

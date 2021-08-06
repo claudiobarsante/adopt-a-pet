@@ -13,35 +13,27 @@ export type SignUpInfo = {
   code: string;
 };
 
-export const signUpUserService = ({
-  nickname,
-  password,
-  email,
-  confirmPassword,
-  phone,
-  zipcode,
-  neighborhood,
-  city,
-  state,
-  code
-}: SignUpInfo) => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
+export const signUpService = (userData: SignUpInfo) => {
   return apiClient({
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
     url: `${baseUrl}/v1/account/register`,
-    data: JSON.stringify({
-      nickname,
-      password,
-      email,
-      confirmPassword,
-      phone,
-      zipcode,
-      neighborhood,
-      city,
-      state,
-      code
-    })
+    data: JSON.stringify(userData)
+  });
+};
+
+export type Credentials = {
+  email: string;
+  password: string;
+};
+
+export const signInService = ({ email, password }: Credentials) => {
+  return apiClient({
+    method: 'post',
+    headers: { 'Content-Type': 'text/plain' },
+    url: `${baseUrl}/token`,
+    data: `username=${email}&password=${password}&grant_type=password`
   });
 };

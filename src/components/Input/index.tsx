@@ -1,8 +1,8 @@
 import React, { InputHTMLAttributes } from 'react';
 import { IconBaseProps } from 'react-icons';
+import { ErrorMessage, useField } from 'formik';
 // -- Styles
 import * as S from './styles';
-import { ErrorMessage, useField } from 'formik';
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
@@ -13,8 +13,6 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 const Input = ({ name, label, icon: Icon, ...rest }: Props) => {
   const [field, meta] = useField(name);
-
-  console.log('field', field, 'meta', meta);
 
   const error = meta.touched && meta.error ? true : false;
 
