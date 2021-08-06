@@ -1,4 +1,4 @@
-export const BRAZIL_STATES = {
+export const BRAZIL_STATES: { [uf: string]: string } = {
   AC: 'Acre',
   AL: 'Alagoas',
   AP: 'Amapá',
