@@ -10,47 +10,22 @@ import { useAuth } from 'context/auth';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import { toast, Slide } from 'react-toastify';
 
+type GetInfoParams = {
+  setFieldValue: (field: string, value: any, shouldValidate?: boolean) => void;
+  value: string;
+  event: FormEvent;
+};
 const SignUpForm = () => {
   const router = useRouter();
   const { signUp } = useAuth();
 
   // -- Functions
-  const handleSubmit = async ({
-    nickname,
-    password,
-    email,
-    confirmPassword,
-    phone,
-    zipcode,
-    neighborhood,
-    city,
-    state,
-    code
-  }: SignUpInfo) => {
-    signUp({
-      nickname,
-      password,
-      email,
-      confirmPassword,
-      phone,
-      zipcode,
-      neighborhood,
-      city,
-      state,
-      code
-    });
+  const handleSubmit = async (values: SignUpInfo) => {
+    signUp(values);
   };
 
   const handleGetInfo = useCallback(
-    async (
-      setFieldValue: (
-        field: string,
-        value: any,
-        shouldValidate?: boolean
-      ) => void,
-      value: string,
-      event: FormEvent
-    ) => {
+    async ({ setFieldValue, value, event }: GetInfoParams) => {
       event.preventDefault();
 
       try {
