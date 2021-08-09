@@ -4,6 +4,8 @@ import Head from 'next/head';
 import React from 'react';
 import GlobalStyles from 'styles/global';
 import { AuthProvider } from 'context/auth';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -26,9 +28,12 @@ function App({ Component, pageProps }: AppProps) {
         />
       </Head>
       <GlobalStyles />
+
       <AuthProvider>
         <Navbar />
+
         <Component {...pageProps} />
+        <ToastContainer />
       </AuthProvider>
     </>
   );

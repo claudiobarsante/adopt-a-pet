@@ -23,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
       border: 1px solid var(--color-error);
       transition: border-color 2s, color 2s;
     `}
-
+   //--It selects an element if that element contains any children that have :focus
    &:focus-within {
     border: 1px solid var(--color-mustard);
     transition: border-color 2s, color 2s;
