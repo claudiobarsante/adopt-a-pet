@@ -58,25 +58,13 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
           router.push('/account/signin');
         } else {
           console.log('passei no erro-dentro do if');
-          toast.error(`sddfsdfd`, {
-            autoClose: 5000,
-            closeOnClick: true,
-            draggable: true,
-            hideProgressBar: false,
-            pauseOnHover: true,
-            position: 'top-right',
+          toast.error(`😿`, {
             transition: Slide
           });
         }
       } catch (error) {
         console.log('passei no erro');
         toast.error(`sddfsdfd`, {
-          autoClose: 5000,
-          closeOnClick: true,
-          draggable: true,
-          hideProgressBar: false,
-          pauseOnHover: true,
-          position: 'top-right',
           transition: Slide
         });
       }

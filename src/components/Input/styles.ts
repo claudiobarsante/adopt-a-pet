@@ -2,10 +2,18 @@ import styled, { css } from 'styled-components';
 
 type ContainerProps = {
   isErrored: boolean;
+  widthRef: number;
 };
 
 export const Container = styled.div<ContainerProps>`
-  width: 100%;
+  /**
+  if props.widthRef = 1 then width = 100%
+  if props.widthRef = 2 then width = 50%
+  if props.widthRef = 3 then width = 30%
+  ...
+  */
+  width: ${(props) =>
+    100 / props.widthRef + '%'};//setting in percentage the width of the input
   height: 5.6rem;
   background: var(--color-grey);
   border-radius: 1rem;

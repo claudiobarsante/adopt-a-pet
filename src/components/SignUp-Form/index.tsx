@@ -12,6 +12,7 @@ import { useAuth } from 'context/auth';
 // -- Helpers
 import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
+import * as S from './styles';
 
 type GetInfoParams = {
   setFieldValue: (
@@ -65,110 +66,122 @@ const SignUpForm = () => {
   return (
     <>
       <h1>Cadastro</h1>
-      <Formik
-        initialValues={INITIAL_VALUES}
-        validationSchema={SignUpSchema}
-        onSubmit={(values) => handleSubmit(values)}
-      >
-        {({ values, setFieldValue }) => (
-          <Form>
-            <Input
-              name="nickname"
-              type="text"
-              placeholder="Apelido"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Apelido"
-            />
-            <Input
-              name="email"
-              type="email"
-              placeholder="E-mail"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="email"
-            />
-            <Input
-              name="password"
-              type="password"
-              placeholder="Senha"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Senha"
-            />
-            <Input
-              name="confirmPassword"
-              type="password"
-              placeholder="Confirme sua senha"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Apelido"
-            />
-            <Input
-              name="phone"
-              type="text"
-              placeholder="Telefone"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Telefone"
-            />
+      <S.Container>
+        <Formik
+          initialValues={INITIAL_VALUES}
+          validationSchema={SignUpSchema}
+          onSubmit={(values) => handleSubmit(values)}
+        >
+          {({ values, setFieldValue }) => (
+            <Form>
+              <Input
+                name="nickname"
+                type="text"
+                placeholder="Apelido"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Como gostaria de ser chamado"
+                widthRef={1}
+              />
+              <Input
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="email"
+                widthRef={1}
+              />
+              <Input
+                name="password"
+                type="password"
+                placeholder="Senha"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Senha"
+                widthRef={2}
+              />
+              <Input
+                name="confirmPassword"
+                type="password"
+                placeholder="Digite novamente sua senha"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Confirme sua senha"
+                widthRef={2}
+              />
+              <Input
+                name="phone"
+                type="text"
+                placeholder="Telefone"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Telefone"
+                widthRef={3}
+              />
 
-            <Input
-              name="zipcode"
-              type="number"
-              placeholder="Cep"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Cep"
-            />
+              <Input
+                name="zipcode"
+                type="number"
+                placeholder="Cep"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Cep"
+                widthRef={3}
+              />
 
-            <Input
-              name="city"
-              type="text"
-              placeholder="Cidade"
-              icon={AiOutlineUser}
-              maxLength={10}
-              label="Cidade"
-            />
+              <Input
+                name="city"
+                type="text"
+                placeholder="Cidade"
+                icon={AiOutlineUser}
+                maxLength={10}
+                label="Cidade"
+                widthRef={2}
+              />
 
-            <Input
-              name="neighborhood"
-              type="text"
-              placeholder="Bairro"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Bairro"
-            />
+              <Input
+                name="neighborhood"
+                type="text"
+                placeholder="Bairro"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Bairro"
+                widthRef={2}
+              />
 
-            <Input
-              name="state"
-              type="text"
-              placeholder="Estado"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="Estado"
-            />
-            <Input
-              name="code"
-              type="text"
-              placeholder="UF"
-              icon={AiOutlineUser}
-              maxLength={50}
-              label="UF"
-            />
-            <button
-              onClick={(event) =>
-                handleGetInfo({ setFieldValue, value: values.zipcode, event })
-              }
-            >
-              get it{' '}
-            </button>
+              <Input
+                name="state"
+                type="text"
+                placeholder="Estado"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="Estado"
+                widthRef={2}
+              />
+              <Input
+                name="code"
+                type="text"
+                placeholder="UF"
+                icon={AiOutlineUser}
+                maxLength={50}
+                label="UF"
+                widthRef={3}
+              />
+              <button
+                onClick={(event) =>
+                  handleGetInfo({ setFieldValue, value: values.zipcode, event })
+                }
+              >
+                get it{' '}
+              </button>
 
-            <button type="reset">Reset</button>
-            <button type="submit">Submit</button>
-          </Form>
-        )}
-      </Formik>
+              <button type="reset">Reset</button>
+              <button type="submit">Submit</button>
+            </Form>
+          )}
+        </Formik>
+      </S.Container>
     </>
   );
 };

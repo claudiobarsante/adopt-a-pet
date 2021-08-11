@@ -5,7 +5,7 @@ const SignUp = () => {
   return (
     <>
       <Head>
-        <title>Registre-se | Adote um Pet</title>
+        <title>Cadastre-se | Adote um Pet 🐈</title>
       </Head>
       <SignUpForm />;
     </>
