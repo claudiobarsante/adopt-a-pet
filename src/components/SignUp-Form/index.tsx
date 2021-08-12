@@ -13,6 +13,7 @@ import { useAuth } from 'context/auth';
 import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
+import { ConfirmPasswordContainer, EmailContainer } from './styles';
 
 type GetInfoParams = {
   setFieldValue: (
@@ -79,56 +80,69 @@ const SignUpForm = () => {
                 type="text"
                 placeholder="Apelido"
                 icon={AiOutlineUser}
-                maxLength={50}
+                maxLength={18}
                 label="Como gostaria de ser chamado"
-                widthRef={1}
               />
-              <Input
-                name="email"
-                type="email"
-                placeholder="E-mail"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="email"
-                widthRef={1}
-              />
-              <Input
-                name="password"
-                type="password"
-                placeholder="Senha"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="Senha"
-                widthRef={2}
-              />
-              <Input
-                name="confirmPassword"
-                type="password"
-                placeholder="Digite novamente sua senha"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="Confirme sua senha"
-                widthRef={2}
-              />
-              <Input
-                name="phone"
-                type="text"
-                placeholder="Telefone"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="Telefone"
-                widthRef={3}
-              />
+              <S.EmailContainer>
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="E-mail"
+                  icon={AiOutlineUser}
+                  maxLength={50}
+                  label="E-mail"
+                />
+              </S.EmailContainer>
+              <S.PasswordContainer>
+                <Input
+                  name="password"
+                  type="password"
+                  placeholder="Senha"
+                  icon={AiOutlineUser}
+                  maxLength={50}
+                  label="Senha"
+                />
 
-              <Input
-                name="zipcode"
-                type="number"
-                placeholder="Cep"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="Cep"
-                widthRef={3}
-              />
+                <Input
+                  name="confirmPassword"
+                  type="password"
+                  placeholder="Digite novamente"
+                  icon={AiOutlineUser}
+                  maxLength={50}
+                  label="Confirme sua senha"
+                />
+              </S.PasswordContainer>
+              <S.PhoneContainer>
+                <Input
+                  name="phone"
+                  type="text"
+                  placeholder="Telefone"
+                  icon={AiOutlineUser}
+                  maxLength={50}
+                  label="Telefone"
+                />
+              </S.PhoneContainer>
+              <S.ZipcodeContainer>
+                <Input
+                  name="zipcode"
+                  type="number"
+                  placeholder="Cep"
+                  icon={AiOutlineUser}
+                  maxLength={50}
+                  label="Cep"
+                />
+                <button
+                  onClick={(event) =>
+                    handleGetInfo({
+                      setFieldValue,
+                      value: values.zipcode,
+                      event
+                    })
+                  }
+                >
+                  get it{' '}
+                </button>
+              </S.ZipcodeContainer>
 
               <Input
                 name="city"
@@ -137,7 +151,6 @@ const SignUpForm = () => {
                 icon={AiOutlineUser}
                 maxLength={10}
                 label="Cidade"
-                widthRef={2}
               />
 
               <Input
@@ -147,7 +160,6 @@ const SignUpForm = () => {
                 icon={AiOutlineUser}
                 maxLength={50}
                 label="Bairro"
-                widthRef={2}
               />
 
               <Input
@@ -157,7 +169,6 @@ const SignUpForm = () => {
                 icon={AiOutlineUser}
                 maxLength={50}
                 label="Estado"
-                widthRef={2}
               />
               <Input
                 name="code"
@@ -166,15 +177,7 @@ const SignUpForm = () => {
                 icon={AiOutlineUser}
                 maxLength={50}
                 label="UF"
-                widthRef={3}
               />
-              <button
-                onClick={(event) =>
-                  handleGetInfo({ setFieldValue, value: values.zipcode, event })
-                }
-              >
-                get it{' '}
-              </button>
 
               <button type="reset">Reset</button>
               <button type="submit">Submit</button>

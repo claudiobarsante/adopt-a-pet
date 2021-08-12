@@ -14,6 +14,10 @@ export const INITIAL_VALUES: SignUpInfo = {
 };
 
 export const SignUpSchema = yup.object().shape({
+  nickname: yup
+    .string()
+    .required('Apelido é um campo obrigatório')
+    .max(18, 'Tamanho máxio permitido 18 caracteres'),
   email: yup
     .string()
     .required('E-mail é um campo obrigatório')
