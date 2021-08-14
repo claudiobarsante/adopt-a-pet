@@ -6,6 +6,11 @@ type InputContainerProps = {
 export const ComponentContainer = styled.div`
   margin-top: 0.6rem;
   margin-bottom: 2rem;
+
+  label {
+    display: inline-block;
+    margin-bottom: 0.3rem;
+  }
 `;
 
 export const InputContainer = styled.div<InputContainerProps>`
@@ -60,6 +65,7 @@ export const InputContainer = styled.div<InputContainerProps>`
 export const ErrorContainer = styled.div<InputContainerProps>`
   color: var(--color-error);
   font-size: 1.5rem;
+  height: 1.5rem;
   ${(props) =>
     props.isErrored &&
     css`
