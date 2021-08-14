@@ -6,13 +6,18 @@ import * as S from './styles';
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
-  type: string;
-
+  isUpperCase?: boolean;
   icon?: React.ComponentType<IconBaseProps>; //to receive a component as property
   //and to add the properties from react-icons, must pass type as IconBaseProps
 }
 
-const Input = ({ name, label, icon: Icon, ...rest }: Props) => {
+const Input = ({
+  name,
+  label,
+  icon: Icon,
+  isUpperCase = false,
+  ...rest
+}: Props) => {
   const [field, meta] = useField(name);
 
   const error = meta.touched && meta.error ? true : false;
@@ -20,7 +25,7 @@ const Input = ({ name, label, icon: Icon, ...rest }: Props) => {
   return (
     <S.ComponentContainer>
       <label htmlFor={name}>{label}</label>
-      <S.InputContainer isErrored={error}>
+      <S.InputContainer isErrored={error} isUpperCase={isUpperCase}>
         {Icon && <Icon size={24} />}
         <input {...field} {...rest} />
       </S.InputContainer>

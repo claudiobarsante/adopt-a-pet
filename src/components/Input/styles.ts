@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 type InputContainerProps = {
   isErrored: boolean;
+  isUpperCase?: boolean;
 };
 export const ComponentContainer = styled.div`
   margin-top: 0.6rem;
@@ -55,6 +56,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     margin: 0.2rem;
     outline: 0;
     width: 100%;
+    text-transform: ${(props) => (props.isUpperCase ? 'uppercase' : 'none')};
 
     &::placeholder {
       color: var(--color-grey-hard);

@@ -1,7 +1,16 @@
 import React, { FormEvent, useCallback } from 'react';
 import { Formik, Form } from 'formik';
 import { toast, Slide } from 'react-toastify';
-import { AiOutlineLock, AiOutlineUser } from 'react-icons/ai';
+import {
+  AiOutlineUser,
+  AiOutlineMail,
+  AiFillUnlock,
+  AiOutlineLock,
+  AiOutlinePhone
+} from 'react-icons/ai';
+import { MdMyLocation, MdLocationCity } from 'react-icons/md';
+import { GoLocation } from 'react-icons/go';
+import { BiMapPin, BiMapAlt } from 'react-icons/bi';
 // -- Services
 import { SignUpInfo } from 'api/services/authService';
 import { getAddressInfo } from 'api/services/viaCepService';
@@ -13,9 +22,8 @@ import { useAuth } from 'context/auth';
 import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
-import { ConfirmPasswordContainer, EmailContainer } from './styles';
 
-type GetInfoParams = {
+type InfoParams = {
   setFieldValue: (
     field: string,
     value: unknown,
@@ -33,7 +41,7 @@ const SignUpForm = () => {
   };
 
   const handleGetInfo = useCallback(
-    async ({ setFieldValue, value, event }: GetInfoParams) => {
+    async ({ setFieldValue, value, event }: InfoParams) => {
       event.preventDefault();
 
       try {
@@ -88,8 +96,8 @@ const SignUpForm = () => {
                   name="email"
                   type="email"
                   placeholder="E-mail"
-                  icon={AiOutlineUser}
-                  maxLength={50}
+                  icon={AiOutlineMail}
+                  maxLength={256}
                   label="E-mail"
                 />
               </S.EmailContainer>
@@ -98,7 +106,7 @@ const SignUpForm = () => {
                   name="password"
                   type="password"
                   placeholder="Senha"
-                  icon={AiOutlineUser}
+                  icon={AiFillUnlock}
                   maxLength={50}
                   label="Senha"
                 />
@@ -107,7 +115,7 @@ const SignUpForm = () => {
                   name="confirmPassword"
                   type="password"
                   placeholder="Digite novamente"
-                  icon={AiOutlineUser}
+                  icon={AiOutlineLock}
                   maxLength={50}
                   label="Confirme sua senha"
                 />
@@ -117,8 +125,8 @@ const SignUpForm = () => {
                   name="phone"
                   type="text"
                   placeholder="Telefone"
-                  icon={AiOutlineUser}
-                  maxLength={50}
+                  icon={AiOutlinePhone}
+                  maxLength={15}
                   label="Telefone"
                 />
               </S.PhoneContainer>
@@ -127,8 +135,8 @@ const SignUpForm = () => {
                   name="zipcode"
                   type="number"
                   placeholder="Cep"
-                  icon={AiOutlineUser}
-                  maxLength={50}
+                  icon={MdMyLocation}
+                  maxLength={8}
                   label="Cep"
                 />
                 <button
@@ -143,13 +151,20 @@ const SignUpForm = () => {
                   get it{' '}
                 </button>
               </S.ZipcodeContainer>
-
+              <Input
+                name="state"
+                type="text"
+                placeholder="Estado"
+                icon={GoLocation}
+                maxLength={50}
+                label="Estado"
+              />
               <Input
                 name="city"
                 type="text"
                 placeholder="Cidade"
-                icon={AiOutlineUser}
-                maxLength={10}
+                icon={MdLocationCity}
+                maxLength={100}
                 label="Cidade"
               />
 
@@ -157,26 +172,19 @@ const SignUpForm = () => {
                 name="neighborhood"
                 type="text"
                 placeholder="Bairro"
-                icon={AiOutlineUser}
+                icon={BiMapPin}
                 maxLength={50}
                 label="Bairro"
               />
 
               <Input
-                name="state"
-                type="text"
-                placeholder="Estado"
-                icon={AiOutlineUser}
-                maxLength={50}
-                label="Estado"
-              />
-              <Input
                 name="code"
                 type="text"
                 placeholder="UF"
-                icon={AiOutlineUser}
-                maxLength={50}
+                icon={BiMapAlt}
+                maxLength={2}
                 label="UF"
+                isUpperCase
               />
 
               <button type="reset">Reset</button>
