@@ -19,5 +19,10 @@ export const PhoneContainer = styled.div`
 `;
 
 export const ZipcodeContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 35% 65%;
+  grid-gap: 2rem;
+
+  justify-items: center;
+  align-items: center;
 `;

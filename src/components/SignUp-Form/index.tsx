@@ -22,6 +22,7 @@ import { useAuth } from 'context/auth';
 import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
+import Button from 'components/Button';
 
 type InfoParams = {
   setFieldValue: (
@@ -139,7 +140,10 @@ const SignUpForm = () => {
                   maxLength={8}
                   label="Cep"
                 />
-                <button
+                <Button
+                  backgroundColor="blue"
+                  textColor="white"
+                  size="small"
                   onClick={(event) =>
                     handleGetInfo({
                       setFieldValue,
@@ -148,8 +152,8 @@ const SignUpForm = () => {
                     })
                   }
                 >
-                  get it{' '}
-                </button>
+                  Buscar informações adicionais do endereço
+                </Button>
               </S.ZipcodeContainer>
               <Input
                 name="state"

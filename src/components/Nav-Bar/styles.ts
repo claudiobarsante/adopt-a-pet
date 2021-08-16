@@ -45,6 +45,7 @@ export const SignUpContainer = styled.div`
 `;
 
 export const LoginContainer = styled.div`
-  //border: 1px solid gray;
+  border: 1px solid gray;
+  fit-content: ;
   //grid-area: login;
 `;

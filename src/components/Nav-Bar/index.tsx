@@ -17,7 +17,9 @@ const Navbar = () => {
         <ActiveLink href="/account/signup" name="Cadastre-se" />
       </S.SignUpContainer>
       <S.LoginContainer>
-        <Button>Log in</Button>
+        <Button backgroundColor="black" textColor="white" size="medium">
+          Log in
+        </Button>
       </S.LoginContainer>
     </S.Header>
   );
