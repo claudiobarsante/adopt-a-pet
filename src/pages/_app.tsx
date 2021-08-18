@@ -8,7 +8,7 @@ import ToastContainerWrapper from 'components/Toast-Container';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-import Router from 'next/router';
+import AppProvider from 'context/index';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -32,19 +32,12 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyles />
 
-      <AuthProvider>
-        {/* <NextNprogress
-          color="#f231a5"
-          startPosition={0.3}
-          stopDelayMs={200}
-          height={8}
-          showOnShallow={true}
-        /> */}
-        {/* <Navbar /> */}
-        <NextNProgress height={8} color="#209cee" />
+      <AppProvider>
+        <Navbar />
+
         <Component {...pageProps} />
         <ToastContainerWrapper />
-      </AuthProvider>
+      </AppProvider>
     </>
   );
 }
