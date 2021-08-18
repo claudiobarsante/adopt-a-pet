@@ -1,8 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, KeyboardEvent } from 'react';
 import { IconBaseProps } from 'react-icons';
 import { useField, ErrorMessage } from 'formik';
 // -- Styles
 import * as S from './styles';
+//import { onlyNumbers } from 'helpers/utils';
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
@@ -22,12 +23,19 @@ const Input = ({
 
   const error = meta.touched && meta.error ? true : false;
 
+  // const handleOnKeyPress = (event: KeyboardEvent) => {
+  //   onlyNumbers(event);
+  // };
   return (
     <S.ComponentContainer>
       <label htmlFor={name}>{label}</label>
       <S.InputContainer isErrored={error} isUpperCase={isUpperCase}>
         {Icon && <Icon size={24} />}
-        <input {...field} {...rest} />
+        <input
+          {...field}
+          {...rest}
+          //onKeyPress={(event: KeyboardEvent) => handleOnKeyPress(event)}
+        />
       </S.InputContainer>
       <S.ErrorContainer isErrored={error}>
         <ErrorMessage name={field.name} />

@@ -8,6 +8,7 @@ import {
 import { ResponseStatus } from 'helpers/utils';
 import { createContext, useCallback, useContext } from 'react';
 import { useRouter } from 'next/router';
+import { getErrorMessage } from 'helpers/errors';
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -53,20 +54,26 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       try {
         const response = await signUpService(userData);
         const { success, errorDescription } = JSON.parse(response.data);
-        console.log('pasei no context', success, errorDescription);
+
         if (success) {
           router.push('/account/signin');
         } else {
-          console.log('passei no erro-dentro do if');
-          toast.error(`😿`, {
+          const message = getErrorMessage(
+            errorDescription.errors[0],
+            userData.email
+          );
+          toast.info(`😿 ${message}`, {
             transition: Slide
           });
         }
       } catch (error) {
-        console.log('passei no erro');
-        toast.error(`sddfsdfd`, {
-          transition: Slide
-        });
+        console.log('error', error);
+        toast.error(
+          `💥 Ocorreu um erro inesperado no cadastro. Tente em alguns minutos, se o erro persisistir entre em contato conosco`,
+          {
+            transition: Slide
+          }
+        );
       }
     },
     [router]

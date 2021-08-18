@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes } from 'react';
-
+import Image from 'next/image';
 import * as S from './styles';
 
 //could use type rather than interface because it's not overwriting or extending
@@ -24,6 +24,9 @@ const Button = ({
     {...rest}
   >
     {children}
+    <S.ImageContainer>
+      <Image src="/loading.svg" width={25} height={25} />
+    </S.ImageContainer>
   </S.Container>
 );
 

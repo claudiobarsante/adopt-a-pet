@@ -54,25 +54,18 @@ const SignUpForm = () => {
         setFieldValue('city', localidade, false);
         setFieldValue('state', BRAZIL_STATES[uf], false);
       } catch (error) {
-        // todo: why Toast is not working ?
-        toast('Wow so easy!');
         console.log('error ', error);
         const MESSAGE =
-          'Ocorreu um erro ao tentar buscar as informações do seu cep';
-        toast.error(`sddfsdfd`, {
-          autoClose: 5000,
-          closeOnClick: true,
-          draggable: true,
-          hideProgressBar: false,
-          pauseOnHover: true,
-          position: 'top-right',
+          ' 🔴 Ocorreu um erro ao tentar buscar as informações do seu cep, você pode tentar novamente em alguns instantes ou se preferir preencher manualmente';
+        toast(MESSAGE, {
+          autoClose: 6000,
           transition: Slide
         });
       }
     },
     []
   );
-
+  //Todo: make input type verifications and improve error messages
   return (
     <>
       <h1>Cadastro</h1>
@@ -190,9 +183,24 @@ const SignUpForm = () => {
                 label="UF"
                 isUpperCase
               />
-
-              <button type="reset">Reset</button>
-              <button type="submit">Submit</button>
+              <S.ActionsContainer>
+                <Button
+                  backgroundColor="pink"
+                  textColor="white"
+                  size="medium"
+                  type="submit"
+                >
+                  Enviar
+                </Button>
+                <Button
+                  backgroundColor="yellow"
+                  textColor="white"
+                  size="medium"
+                  type="reset"
+                >
+                  Limpar
+                </Button>
+              </S.ActionsContainer>
             </Form>
           )}
         </Formik>

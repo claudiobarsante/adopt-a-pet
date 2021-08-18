@@ -1,11 +1,14 @@
 import Navbar from 'components/Nav-Bar';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import Head from 'next/head';
-import React from 'react';
+import React, { useEffect } from 'react';
 import GlobalStyles from 'styles/global';
 import { AuthProvider } from 'context/auth';
 import ToastContainerWrapper from 'components/Toast-Container';
+import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.min.css';
+
+import Router from 'next/router';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -30,8 +33,15 @@ function App({ Component, pageProps }: AppProps) {
       <GlobalStyles />
 
       <AuthProvider>
-        <Navbar />
-
+        {/* <NextNprogress
+          color="#f231a5"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={8}
+          showOnShallow={true}
+        /> */}
+        {/* <Navbar /> */}
+        <NextNProgress height={8} color="#209cee" />
         <Component {...pageProps} />
         <ToastContainerWrapper />
       </AuthProvider>

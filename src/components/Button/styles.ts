@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 
 type ButtonProps = {
   backgroundColor: 'black' | 'blue' | 'pink' | 'yellow' | 'purple';
@@ -25,6 +26,7 @@ export const Container = styled.button<ButtonProps>`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   height: ${(props) => sizeMaps[props.size]}rem;
   width: 100%;
@@ -45,4 +47,10 @@ export const Container = styled.button<ButtonProps>`
   &:hover {
     filter: brightness(0.9);
   }
+`;
+
+export const ImageContainer = styled.div`
+  display: flex;
+  right: 4%;
+  position: absolute;
 `;

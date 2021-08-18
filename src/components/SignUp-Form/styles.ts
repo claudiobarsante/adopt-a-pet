@@ -26,3 +26,9 @@ export const ZipcodeContainer = styled.div`
   justify-items: center;
   align-items: center;
 `;
+
+export const ActionsContainer = styled.div`
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 2rem;
+`;
