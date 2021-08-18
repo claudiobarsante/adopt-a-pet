@@ -16,18 +16,17 @@ const Button = ({
   size,
   children,
   ...rest
-}: Props) => (
-  <S.Container
-    backgroundColor={backgroundColor}
-    textColor={textColor}
-    size={size}
-    {...rest}
-  >
-    {children}
-    <S.ImageContainer>
-      <Image src="/loading.svg" width={25} height={25} />
-    </S.ImageContainer>
-  </S.Container>
-);
+}: Props) => {
+  return (
+    <S.Container
+      backgroundColor={backgroundColor}
+      textColor={textColor}
+      size={size}
+      {...rest}
+    >
+      {children}
+    </S.Container>
+  );
+};
 
 export default Button;

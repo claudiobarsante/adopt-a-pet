@@ -1,4 +1,5 @@
 import React, { FormEvent, useCallback } from 'react';
+import Image from 'next/image';
 import { Formik, Form } from 'formik';
 import { toast, Slide } from 'react-toastify';
 import {
@@ -23,6 +24,7 @@ import { BRAZIL_STATES } from 'helpers/utils';
 import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
 import Button from 'components/Button';
+import { useLoading } from 'context/loading';
 
 type InfoParams = {
   setFieldValue: (
@@ -35,6 +37,7 @@ type InfoParams = {
 };
 const SignUpForm = () => {
   const { signUp } = useAuth();
+  const { isLoading } = useLoading();
 
   // -- Functions
   const handleSubmit = async (values: SignUpInfo) => {
@@ -66,6 +69,7 @@ const SignUpForm = () => {
     []
   );
   //Todo: make input type verifications and improve error messages
+  //Todo2:make Modal transition more smooth
   return (
     <>
       <h1>Cadastro</h1>
@@ -204,6 +208,16 @@ const SignUpForm = () => {
             </Form>
           )}
         </Formik>
+        <S.StyledModal isOpen={isLoading}>
+          <div>
+            <Image
+              src="/loading-bars.svg"
+              alt="Barra de carregamento de página verde"
+              width={40}
+              height={40}
+            />
+          </div>
+        </S.StyledModal>
       </S.Container>
     </>
   );

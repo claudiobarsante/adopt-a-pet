@@ -9,6 +9,7 @@ import { ResponseStatus } from 'helpers/utils';
 import { createContext, useCallback, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { getErrorMessage } from 'helpers/errors';
+import { useLoading } from 'context/loading';
 
 type AuthProviderProps = {
   children: React.ReactNode;
@@ -31,7 +32,6 @@ type AuthState = {
     message: string;
   };
   token: string;
-  isLoading: boolean;
 };
 const INITIAL_STATE: AuthState = {
   user: {
@@ -41,18 +41,20 @@ const INITIAL_STATE: AuthState = {
     expirationDate: new Date('2021-0-01')
   },
   error: { code: 0, message: '' },
-  token: '',
-  isLoading: false
+  token: ''
 };
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const router = useRouter();
+  const { changeIsLoadingToTrue, changeIsLoadingToFalse } = useLoading();
 
   const signUp = useCallback(
     async (userData: SignUpInfo) => {
       try {
+        changeIsLoadingToTrue();
         const response = await signUpService(userData);
+        changeIsLoadingToFalse();
         const { success, errorDescription } = JSON.parse(response.data);
 
         if (success) {

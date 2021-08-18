@@ -48,9 +48,3 @@ export const Container = styled.button<ButtonProps>`
     filter: brightness(0.9);
   }
 `;
-
-export const ImageContainer = styled.div`
-  display: flex;
-  right: 4%;
-  position: absolute;
-`;

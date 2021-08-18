@@ -7,6 +7,7 @@ import { AuthProvider } from 'context/auth';
 import ToastContainerWrapper from 'components/Toast-Container';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.min.css';
+import { ModalProvider } from 'styled-react-modal';
 
 import AppProvider from 'context/index';
 
@@ -34,8 +35,9 @@ function App({ Component, pageProps }: AppProps) {
 
       <AppProvider>
         <Navbar />
-
-        <Component {...pageProps} />
+        <ModalProvider>
+          <Component {...pageProps} />
+        </ModalProvider>
         <ToastContainerWrapper />
       </AppProvider>
     </>

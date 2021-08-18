@@ -18,10 +18,12 @@ const LoadingProvider = ({ children }: LoadingProviderProps) => {
   const [isLoading, setIsLoading] = useState(false);
 
   const changeIsLoadingToTrue = useCallback(() => {
+    console.log('dentro do loading', true);
     setIsLoading(true);
   }, []);
 
   const changeIsLoadingToFalse = useCallback(() => {
+    console.log('dentro do loading', false);
     setIsLoading(false);
   }, []);
 
