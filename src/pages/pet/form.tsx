@@ -1,4 +1,4 @@
-import DropDown from 'components/Dropdown';
+import DropDown from '../../components/Dropdown';
 import { GetStaticProps } from 'next';
 import { getBaseInfosService } from './../../api/services/formService';
 
