@@ -1,4 +1,4 @@
-import React, { FormEvent, useCallback } from 'react';
+import React, { FormEvent, useCallback, useState } from 'react';
 import Image from 'next/image';
 import { Formik, Form } from 'formik';
 import { toast, Slide } from 'react-toastify';
@@ -38,6 +38,7 @@ type InfoParams = {
 const SignUpForm = () => {
   const { signUp } = useAuth();
   const { isLoading } = useLoading();
+  const [open, setOpen] = useState(false);
 
   // -- Functions
   const handleSubmit = async (values: SignUpInfo) => {
@@ -151,6 +152,14 @@ const SignUpForm = () => {
                 >
                   Buscar informações adicionais do endereço
                 </Button>
+                <Button
+                  backgroundColor="purple"
+                  textColor="white"
+                  size="small"
+                  onClick={() => setOpen(true)}
+                >
+                  Open
+                </Button>
               </S.ZipcodeContainer>
               <Input
                 name="state"
@@ -208,8 +217,16 @@ const SignUpForm = () => {
             </Form>
           )}
         </Formik>
-        <S.StyledModal isOpen={isLoading}>
+        <S.StyledModal isOpen={open}>
           <div>
+            <Button
+              backgroundColor="black"
+              textColor="white"
+              size="small"
+              onClick={() => setOpen(false)}
+            >
+              Close
+            </Button>
             <Image
               src="/loading-bars.svg"
               alt="Barra de carregamento de página verde"
