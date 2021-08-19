@@ -38,7 +38,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 background-color:transparent;
-transition: all 0.8s ease-in-out;
+//transition: all 0.3s ease-in-out;
 //background-color: var(--background-modal);
 height: 20rem;
 width: 20rem;

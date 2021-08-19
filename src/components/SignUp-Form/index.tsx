@@ -25,6 +25,7 @@ import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
 import Button from 'components/Button';
 import { useLoading } from 'context/loading';
+import FormLoading from 'components/Form-Loading';
 
 type InfoParams = {
   setFieldValue: (
@@ -38,8 +39,8 @@ type InfoParams = {
 const SignUpForm = () => {
   const { signUp } = useAuth();
   const { isLoading } = useLoading();
-  const [open, setOpen] = useState(false);
 
+  console.log('isLoading', isLoading);
   // -- Functions
   const handleSubmit = async (values: SignUpInfo) => {
     signUp(values);
@@ -152,14 +153,6 @@ const SignUpForm = () => {
                 >
                   Buscar informações adicionais do endereço
                 </Button>
-                <Button
-                  backgroundColor="purple"
-                  textColor="white"
-                  size="small"
-                  onClick={() => setOpen(true)}
-                >
-                  Open
-                </Button>
               </S.ZipcodeContainer>
               <Input
                 name="state"
@@ -203,7 +196,7 @@ const SignUpForm = () => {
                   size="medium"
                   type="submit"
                 >
-                  Enviar
+                  {isLoading ? <FormLoading /> : <span>Cadastrar</span>}
                 </Button>
                 <Button
                   backgroundColor="yellow"
@@ -217,24 +210,6 @@ const SignUpForm = () => {
             </Form>
           )}
         </Formik>
-        <S.StyledModal isOpen={open}>
-          <div>
-            <Button
-              backgroundColor="black"
-              textColor="white"
-              size="small"
-              onClick={() => setOpen(false)}
-            >
-              Close
-            </Button>
-            <Image
-              src="/loading-bars.svg"
-              alt="Barra de carregamento de página verde"
-              width={40}
-              height={40}
-            />
-          </div>
-        </S.StyledModal>
       </S.Container>
     </>
   );
