@@ -195,6 +195,7 @@ const SignUpForm = () => {
                   textColor="white"
                   size="medium"
                   type="submit"
+                  disabled={isLoading}
                 >
                   {isLoading ? <FormLoading /> : <span>Cadastrar</span>}
                 </Button>

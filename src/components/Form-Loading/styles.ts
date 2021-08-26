@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const FormLoading = styled.img.attrs(() => ({
-  src: '/img/loading.gif',
+  src: '/img/loading.svg',
   alt: 'Waiting...'
 }))`
-  width: 4rem;
+  width: 3rem;
 `;

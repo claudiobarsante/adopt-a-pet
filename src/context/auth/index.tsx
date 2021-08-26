@@ -53,8 +53,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     async (userData: SignUpInfo) => {
       try {
         changeIsLoadingToTrue();
+
         const response = await signUpService(userData);
-        changeIsLoadingToFalse();
+
         const { success, errorDescription } = JSON.parse(response.data);
 
         if (success) {
@@ -76,9 +77,11 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
             transition: Slide
           }
         );
+      } finally {
+        changeIsLoadingToFalse();
       }
     },
-    [router]
+    [changeIsLoadingToFalse, changeIsLoadingToTrue, router]
   );
 
   const signIn = useCallback(async (userCredentials: Credentials) => {
