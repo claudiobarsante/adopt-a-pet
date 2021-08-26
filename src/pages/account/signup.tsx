@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import SignUpForm from 'components/SignUp-Form';
+import SignUpForm from 'components/SignUpForm';
 
 const SignUp = () => {
   return (

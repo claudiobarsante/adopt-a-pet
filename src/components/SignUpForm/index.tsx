@@ -25,7 +25,7 @@ import { INITIAL_VALUES, SignUpSchema } from 'helpers/sign-up/formik';
 import * as S from './styles';
 import Button from 'components/Button';
 import { useLoading } from 'context/loading';
-import FormLoading from 'components/Form-Loading';
+import FormLoading from 'components/FormLoading';
 
 type InfoParams = {
   setFieldValue: (

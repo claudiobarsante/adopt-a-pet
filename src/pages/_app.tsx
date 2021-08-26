@@ -1,10 +1,10 @@
-import Navbar from 'components/Nav-Bar';
+import Navbar from 'components/Navbar';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import Head from 'next/head';
 import React, { useEffect } from 'react';
 import GlobalStyles from 'styles/global';
 import { AuthProvider } from 'context/auth';
-import ToastContainerWrapper from 'components/Toast-Container';
+import ToastContainerWrapper from 'components/ToastContainer';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ModalProvider } from 'styled-react-modal';

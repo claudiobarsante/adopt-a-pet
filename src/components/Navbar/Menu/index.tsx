@@ -1,4 +1,4 @@
-import ActiveLink from 'components/Active-Link';
+import ActiveLink from 'components/ActiveLink';
 import React from 'react';
 
 const Menu = () => {

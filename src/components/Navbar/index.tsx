@@ -1,4 +1,4 @@
-import ActiveLink from 'components/Active-Link';
+import ActiveLink from 'components/ActiveLink';
 import Button from 'components/Button';
 import React from 'react';
 import Menu from './Menu';
