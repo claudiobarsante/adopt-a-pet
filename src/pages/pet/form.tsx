@@ -2,6 +2,9 @@
 // import { GetStaticProps } from 'next';
 // import { getBaseInfosService } from './../../api/services/formService';
 
+import { getBaseInfosService } from 'api/services/formService';
+import { GetServerSideProps } from 'next';
+
 // type Content = {
 //   text: string;
 //   value: string;
@@ -41,3 +44,11 @@ const PetForm = () => {
 };
 
 export default PetForm;
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const response = await getBaseInfosService(context);
+  console.log(response.data);
+  return {
+    props: {}
+  };
+};

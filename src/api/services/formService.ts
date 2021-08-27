@@ -1,10 +1,11 @@
-import apiClient from './../client';
+import apiClientSetup from 'api/apiClientSetup';
 
-export const getBaseInfosService = () => {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+import { GetServerSidePropsContext } from 'next';
 
-  return apiClient({
+export const getBaseInfosService = (context: GetServerSidePropsContext) => {
+  const api = apiClientSetup(context);
+  return api({
     method: 'GET',
-    url: `${baseUrl}/v1/adoption/baseInfos`
+    url: '/v1/adoption/baseInfos'
   });
 };

@@ -13,13 +13,11 @@ export type SignUpInfo = {
   code: string;
 };
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
-
 export const signUpService = (userData: SignUpInfo) => {
   return apiClient({
     method: 'post',
     headers: { 'Content-Type': 'application/json' },
-    url: `${baseUrl}/v1/account/register`,
+    url: '/v1/account/register',
     data: JSON.stringify(userData)
   });
 };
@@ -33,7 +31,7 @@ export const signInService = ({ email, password }: Credentials) => {
   return apiClient({
     method: 'post',
     headers: { 'Content-Type': 'text/plain' },
-    url: `${baseUrl}/token`,
+    url: '/token',
     data: `username=${email}&password=${password}&grant_type=password`
   });
 };

@@ -96,7 +96,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
   const signIn = useCallback(async (userCredentials: Credentials) => {
     try {
       const response = await signInService(userCredentials);
-
+      console.log('response', response);
       const { access_token, expires_in, nickName, id } = response.data;
 
       const expirationDate = new Date(
@@ -110,6 +110,7 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       };
 
       const token = access_token;
+
       apiClient.defaults.headers['Authorization'] = `Bearer ${access_token}`;
 
       // -- first parameter undefined because it's ont the client side, 2nd name of the token, could be anything,3rd the token
@@ -119,7 +120,9 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
       });
 
       setData((data) => ({ ...data, user, token }));
-    } catch (error) {}
+    } catch (error) {
+      console.log('error', error);
+    }
   }, []);
   return (
     <AuthContext.Provider value={{ signUp, signIn }}>
