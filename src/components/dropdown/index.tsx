@@ -1,3 +1,5 @@
+import Select from 'react-select';
+import React, { useState } from 'react';
 type Content = {
   text: string;
   value: string;
@@ -7,16 +9,43 @@ type Props = {
   data: Content[];
   type: string;
 };
-const DropDown = ({ data, type }: Props) => {
+
+type Option = {
+  value: string;
+  label: string;
+} | null;
+
+const DropDown = ({ data }: Props) => {
+  const [valSelect, setValSelect] = useState(null);
+
+  const handleChangeSelect = (e: Option) => {
+    //get item text
+    // const index = e.nativeEvent.target.selectedIndex;
+    // const text = e.nativeEvent.target[index].text;
+    console.log('e ', e);
+    // setValSelect({ optionValue: e.target.value, optionText: text });
+  };
+
+  const options = data.map((item) => {
+    return {
+      value: item.value,
+      label: item.text
+    };
+  });
+
+  console.log('opitions', data);
+
   return (
-    <select>
-      {data &&
-        data.map((item: Content) => (
-          <option key={item.value} value={item.value}>
-            {item.text}
-          </option>
-        ))}
-    </select>
+    <>
+      {/* <p>Selected value = {valSelect.optionValue}</p>
+      <p>Corresponding text = {valSelect.optionText}</p> */}
+      <Select
+        instanceId="custom-select"
+        options={options}
+        onChange={(e) => handleChangeSelect(e)}
+        placeholder="Make a selection"
+      />
+    </>
   );
 };
 

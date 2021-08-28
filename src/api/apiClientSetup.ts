@@ -23,3 +23,9 @@ export default function apiClientSetup(context?: GetServerSidePropsContext) {
 
   return api;
 }
+/*IMPORTANT !!!
+===============
+To access cookies on the server-side you must pass as a parameter for all methods
+of nookies library a context parameter, otherwise it'll not work.
+For client-side you could leave as undefined
+ */
