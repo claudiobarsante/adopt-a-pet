@@ -1,12 +1,23 @@
 import Head from 'next/head';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useState } from 'react';
 import { useAuth } from 'context/auth';
+import { ErrorType } from 'helpers/utils';
+import { useRouter } from 'next/router';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { signIn } = useAuth();
+  const { data, signIn } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    const { user } = data;
+
+    if (user.isAuthenticated) {
+      router.push(`/error/${ErrorType.IS_ALREADY_AUTHENTICATED}`);
+    }
+  }, [data, router]);
 
   function handleSubmit(event: FormEvent) {
     event.preventDefault();

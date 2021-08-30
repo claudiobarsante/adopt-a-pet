@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import SignUpForm from 'components/SignUpForm';
+import { GetStaticProps } from 'next';
 
 const SignUp = () => {
   return (
@@ -13,3 +14,9 @@ const SignUp = () => {
 };
 
 export default SignUp;
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {}
+  };
+};

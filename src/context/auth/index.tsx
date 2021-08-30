@@ -18,36 +18,40 @@ type AuthProviderProps = {
   children: React.ReactNode;
 };
 
-type AuthContextData = {
-  signUp: (userData: SignUpInfo) => void;
-  signIn: (userCredentials: Credentials) => void;
+type User = {
+  nickname: string;
+  userId: string;
+  isAuthenticated: boolean;
+  expirationDate: Date;
+  token: string;
 };
 
 type AuthState = {
-  user: {
-    nickname: string;
-    userId: string;
-    isAuthenticated: boolean;
-    expirationDate: Date;
-  };
+  user: User;
   error: {
     code: number;
     message: string;
   };
-  token: string;
+};
+
+type AuthContextData = {
+  signUp: (userData: SignUpInfo) => void;
+  signIn: (userCredentials: Credentials) => void;
+  data: AuthState;
 };
 
 export const TOKEN_KEY = '@adopt-a-pet:token';
+export const IS_AUTHENTICATED_KEY = '@adopt-a-pet:isAuthenticated';
 
 const INITIAL_STATE: AuthState = {
   user: {
     nickname: '',
     userId: '',
     isAuthenticated: false,
-    expirationDate: new Date('2021-0-01')
+    expirationDate: new Date('2021-0-01'),
+    token: ''
   },
-  error: { code: 0, message: '' },
-  token: ''
+  error: { code: 0, message: '' }
 };
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -106,26 +110,30 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         nickname: nickName,
         userId: id,
         isAuthenticated: true,
-        expirationDate: expirationDate
+        expirationDate: expirationDate,
+        token: access_token
       };
-
-      const token = access_token;
 
       apiClient.defaults.headers['Authorization'] = `Bearer ${access_token}`;
 
       // -- first parameter undefined because it's ont the client side, 2nd name of the token, could be anything,3rd the token
-      setCookie(undefined, TOKEN_KEY, token, {
-        maxAge: 60 * 60 * 24 * 30, // keep the cookies max 30 days
+      setCookie(undefined, TOKEN_KEY, access_token, {
+        maxAge: 60 * 60 * 24 * 1, // keep the cookies max 1 days
         path: '/' //any route of my application could access these cookies
       });
 
-      setData((data) => ({ ...data, user, token }));
+      setCookie(undefined, IS_AUTHENTICATED_KEY, 'true', {
+        maxAge: 60 * 60 * 24 * 1, // keep the cookies max 1 days
+        path: '/' //any route of my application could access these cookies
+      });
+
+      setData((data) => ({ ...data, user }));
     } catch (error) {
       console.log('error', error);
     }
   }, []);
   return (
-    <AuthContext.Provider value={{ signUp, signIn }}>
+    <AuthContext.Provider value={{ data, signUp, signIn }}>
       {children}
     </AuthContext.Provider>
   );

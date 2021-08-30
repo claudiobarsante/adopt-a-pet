@@ -38,6 +38,10 @@ export enum ResponseStatus {
   INTERNAL_SERVER_ERROR = 500
 }
 
+export enum ErrorType {
+  IS_ALREADY_AUTHENTICATED = 'is-already-authenticated'
+}
+
 //KeyPress
 const removeSpecialCharacters = function (event: KeyboardEvent) {
   const specialCharacters = '!@#$%^&*()+=[]\\\';,/{}|":<>?';

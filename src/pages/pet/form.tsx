@@ -4,6 +4,7 @@ import DropDown from '../../components/Dropdown';
 
 import { getBaseInfosService } from 'api/services/formService';
 import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
 
 type Content = {
   text: string;

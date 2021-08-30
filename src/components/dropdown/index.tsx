@@ -13,12 +13,12 @@ type Props = {
 type Option = {
   value: string;
   label: string;
-} | null;
+};
 
 const DropDown = ({ data }: Props) => {
   const [valSelect, setValSelect] = useState(null);
 
-  const handleChangeSelect = (e: Option) => {
+  const handleChangeSelect = (e: Option | null) => {
     //get item text
     // const index = e.nativeEvent.target.selectedIndex;
     // const text = e.nativeEvent.target[index].text;
@@ -26,14 +26,12 @@ const DropDown = ({ data }: Props) => {
     // setValSelect({ optionValue: e.target.value, optionText: text });
   };
 
-  const options = data.map((item) => {
+  const options: Option[] = data.map((item: Content) => {
     return {
       value: item.value,
       label: item.text
     };
   });
-
-  console.log('opitions', data);
 
   return (
     <>
@@ -43,7 +41,14 @@ const DropDown = ({ data }: Props) => {
         instanceId="custom-select"
         options={options}
         onChange={(e) => handleChangeSelect(e)}
-        placeholder="Make a selection"
+        placeholder="Selecione"
+        theme={(theme) => ({
+          ...theme,
+          colors: {
+            ...theme.colors,
+            primary: '#58bcda'
+          }
+        })}
       />
     </>
   );
