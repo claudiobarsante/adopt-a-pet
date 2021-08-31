@@ -2,8 +2,15 @@ import styled from 'styled-components';
 
 export const Main = styled.main`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 1437px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 `;
 
 export const Section = styled.section`
@@ -23,8 +30,14 @@ export const Section = styled.section`
   }
 
   button {
-    width: 30%;
+    width: 50%;
     margin-top: 5rem;
+  }
+
+  @media screen and (min-width: 1824px) {
+    button {
+      width: 30%;
+    }
   }
 
   svg {
@@ -32,4 +45,6 @@ export const Section = styled.section`
   }
 `;
 
-export const Picture = styled.picture``;
+export const Picture = styled.picture`
+  min-width: 668px;
+`;
