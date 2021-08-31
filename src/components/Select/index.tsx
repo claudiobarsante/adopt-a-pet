@@ -15,7 +15,7 @@ type Option = {
   label: string;
 };
 
-const DropDown = ({ data }: Props) => {
+export default function CustomSelect({ data }: Props) {
   const [valSelect, setValSelect] = useState(null);
 
   const handleChangeSelect = (e: Option | null) => {
@@ -52,6 +52,4 @@ const DropDown = ({ data }: Props) => {
       />
     </>
   );
-};
-
-export default DropDown;
+}

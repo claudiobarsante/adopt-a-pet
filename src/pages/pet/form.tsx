@@ -1,4 +1,4 @@
-import DropDown from 'components/Dropdown';
+import Select from 'components/Select';
 // import { GetStaticProps } from 'next';
 // import { getBaseInfosService } from './../../api/services/formService';
 
@@ -23,7 +23,7 @@ const PetForm = ({ breeds, colors, furs, sizes, tempers, species }: Props) => {
     <>
       <h1>Pet Form</h1>
       <div>
-        <DropDown data={breeds} type="breed" />
+        <Select data={breeds} type="breed" />
       </div>
     </>
   );
