@@ -1,8 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-
-export enum ErrorType {
-  IS_ALREADY_AUTHENTICATED = 'is-already-authenticated'
-}
+import { ErrorType } from 'helpers/utils';
 
 export default function ErrorDetails() {
   return (
@@ -20,7 +17,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log('error', params);
+  console.log('error3', params?.error);
 
   return {
     props: {}
