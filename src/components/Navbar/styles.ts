@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   display: grid;
 
-  grid-template-columns: 20% 60% 10% 10%;
+  grid-template-columns: 20% 58% 12% 10%;
 
   justify-content: center;
   align-items: center;
@@ -22,30 +22,45 @@ export const Header = styled.header`
   right: 0;
   // --
   z-index: 999; */
+  @media screen and (min-width: 1252px) {
+    grid-template-columns: 20% 60% 10% 10%;
+  }
 `;
 
 export const LogoContainer = styled.div`
   //border: 1px solid gray;
   // grid-area: logo;
   // justify-content: flex-start;
-  align-items: center;
+  width: 45%;
+`;
+
+export const Logo = styled.button`
+  background: transparent;
+  border: 0;
 `;
 
 export const Nav = styled.nav`
   //border: 1px solid gray;
   //grid-area: menu;
   a + a {
-    margin-left: 12rem;
+    margin-left: 4rem;
+  }
+
+  @media screen and (min-width: 1389px) {
+    a + a {
+      margin-left: 12rem;
+    }
   }
 `;
 
 export const SignUpContainer = styled.div`
   //border: 1px solid gray;
   //grid-area: sign-up;
+  min-width: 90px;
 `;
 
 export const LoginContainer = styled.div`
-  border: 1px solid gray;
-  fit-content: ;
+  //  border: 1px solid gray;
+  min-width: 111px;
   //grid-area: login;
 `;

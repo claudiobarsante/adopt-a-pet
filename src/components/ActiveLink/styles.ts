@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const StyledLink = styled.a`
   color: var(--color-primary);
-  font-size: 1.7rem;
-  font-weight: 600;
+  font-size: 1.9rem;
+  font-weight: 500;
 
   &:hover {
     text-shadow: 0px 0px 0.1px black;
