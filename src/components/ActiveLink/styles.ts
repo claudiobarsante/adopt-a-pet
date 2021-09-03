@@ -21,3 +21,9 @@ export const StyledLink = styled.a`
     background: var(--color-primary;
   } */
 `;
+export const LinkContainer = styled.div`
+  //display: inline-block;
+`;
+export const Picture = styled.picture`
+  // display: block;
+`;

@@ -1,7 +1,8 @@
 import Link from 'next/link';
-
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import * as S from './styles';
+import underlinePic from '/public/img/underline.png';
 
 type Props = {
   href: string;
@@ -14,10 +15,15 @@ const ActiveLink = ({ href, name }: Props) => {
   //const className = asPath === rest.href ? activeClassName : '';
   return (
     // -- you cant'add style direct to a Link component
+    <>
+      <Link href={href} passHref>
+        <S.StyledLink>{name}</S.StyledLink>
+      </Link>
 
-    <Link href={href}>
-      <S.StyledLink>{name}</S.StyledLink>
-    </Link>
+      {/* <S.Picture>
+        <Image src={underlinePic} alt="underline" quality={75} />
+      </S.Picture> */}
+    </>
   );
 };
 
