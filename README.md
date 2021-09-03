@@ -11,7 +11,7 @@ I will provide all the informations, tech and frameworks soon 🙂
 ## Libraries, frameworks and language 🧰
 
 
-
+## Project status ⚡
 
 
 
