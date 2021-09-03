@@ -2,15 +2,18 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ![Screenshot](/prints/home-view.png)
 
-## Motivation behind the project
+## Motivation behind the project 💚
 
-First, run the development server:
+I will provide all the informations, tech and frameworks soon 🙂
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+
+
+## Libraries, frameworks and language 🧰
+
+
+
+
+
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
