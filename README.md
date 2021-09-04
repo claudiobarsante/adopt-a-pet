@@ -15,10 +15,14 @@ What I want is to provide a home for  pets that are abandoned and alone.🐕
 ## Libraries, frameworks and language 🧰
 
 🖥 Front-end : Javascript, React.js and Next.js
-🏜 Styling : Styled Components
+
+🏜 Styling : Styled-components
+
 🗜 Back-end: .Net web api
+
 🛢DataBase: MSSQL
-🛠Tests: Jest, Cypress
+
+🛠Tests: Testing Library , Jest, Cypress
 
 
 ## Project status ⚡
