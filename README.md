@@ -1,34 +1,32 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+![Screenshot](/prints/home-view.png)
 
-First, run the development server:
+## Motivation behind the project 💚
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+I love dogs and cats. They were part of my life and always played an important role in the good and hard times.
+Whenever something bad happens regardless of whether it's my dog or cat, I'm always very sad. 
+I've been noticing a lot of disorganization and little information for those people who want to adopt a pet. 
+My idea is to build up a platform that has all the information about pets in a standardized way and can put in contact those who want to donate with those who want to adopt a pet.
+I have no intention of making a profit.
+What I want is to provide a home for  pets that are abandoned and alone.🐕
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Libraries, frameworks and language 🧰
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+🖥 Front-end : Javascript, React.js and Next.js
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+🏜 Styling : Styled-components
 
-## Learn More
+🗜 Back-end: .Net web api
 
-To learn more about Next.js, take a look at the following resources:
+🛢DataBase: MSSQL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🛠Tests: Testing Library , Jest, Cypress
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Project status ⚡
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+I'm started a few weeks ago, I don't have any pages finished, but you can see Next.js in action, authentication, saving data in cookies, form using Formik with Yup validation and some components. A lot more to come ✨
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
