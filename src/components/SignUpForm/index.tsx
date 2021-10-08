@@ -77,6 +77,7 @@ const SignUpForm = () => {
       <h1>Cadastro</h1>
       <S.Container>
         <Formik
+          data-testid="form"
           initialValues={INITIAL_VALUES}
           validationSchema={SignUpSchema}
           onSubmit={(values) => handleSubmit(values)}
