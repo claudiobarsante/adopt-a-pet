@@ -1,6 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { IoListCircleSharp } from 'react-icons/io5';
 
+const grow = keyframes`
+  0% {
+    display: none;
+    opacity: 0;
+  }
+  1% {
+    display: flex;
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+`;
 export const Header = styled.header`
   display: none;
 
@@ -9,6 +25,7 @@ export const Header = styled.header`
     align-items: center;
 
     position: relative;
+    animation: ${grow} 1s;
   }
 `;
 
@@ -42,34 +59,18 @@ export const Nav = styled.div`
 `;
 
 export const TopRightContainer = styled.div`
-  /* display: flex;
-  align-items: center;
-  justify-content: space-between; */
-  /* display: grid;
+  display: grid;
   grid-template-columns: 1fr 1fr;
 
   justify-content: center;
   align-items: center;
 
-  width: 18%;
+  border: 1px solid gray;
   min-width: 239px;
-  border: 1px solid gray; */
-  // position: absolute;
-  @media screen and (min-width: 1280px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid gray;
-    min-width: 239px;
-    position: absolute;
-    right: 0;
-    top: 3.3rem;
-    width: 18%;
-  }
-  display: none;
+  position: absolute;
+  right: 0;
+  top: 3.3rem;
+  width: 18%;
 `;
 
 export const MobileMenu = styled.div`

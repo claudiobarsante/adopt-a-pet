@@ -15,6 +15,10 @@ const Navbar = () => {
     router.push('/');
   }, [router]);
 
+  const handleMobileMenuClick = () => {
+    console.log('cli');
+  };
+
   return (
     <>
       <S.Header>
@@ -40,7 +44,7 @@ const Navbar = () => {
         </S.TopRightContainer>
       </S.Header>
       <S.MobileMenu>
-        <S.MobileMenuButton />
+        <S.MobileMenuButton onClick={handleMobileMenuClick} />
       </S.MobileMenu>
     </>
   );
