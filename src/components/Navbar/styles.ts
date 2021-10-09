@@ -1,40 +1,20 @@
 import styled from 'styled-components';
+import { IoListCircleSharp } from 'react-icons/io5';
 
 export const Header = styled.header`
-  display: flex;
-  align-items: center;
-  position: relative;
-  /* display: grid;
+  display: none;
 
-  grid-template-columns: 20% 58% 12% 10%;
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
 
-  justify-content: center;
-  align-items: center;
-  //border: 1px solid gray;
-
-  background: transparent;
-  // color: black;
-  height: 12rem;
-  margin-bottom: 3rem; */
-  // width: 86.9rem;
-
-  /* position: absolute;
-  margin: 0 auto;
-  // -- to center a fixed or absolute element
-  left: 0;
-  right: 0;
-  // --
-  z-index: 999; */
-  /* @media screen and (min-width: 1252px) {
-    grid-template-columns: 20% 60% 10% 10%;
-  } */
+    position: relative;
+  }
 `;
 
 export const LogoContainer = styled.div`
-  //border: 1px solid gray;
-  // grid-area: logo;
-  // justify-content: flex-start;
   margin: 1rem;
+  min-width: 157px;
   width: 10%;
 `;
 
@@ -43,10 +23,10 @@ export const Logo = styled.button`
   border: 0;
 `;
 
-export const Nav = styled.nav`
-  //border: 1px solid gray;
+export const Nav = styled.div`
+  border: 1px solid gray;
   //grid-area: menu;
-  a + a {
+  /* a + a {
     margin-left: 4rem;
   }
 
@@ -54,14 +34,18 @@ export const Nav = styled.nav`
     a + a {
       margin-left: 12rem;
     }
-  }
+  } */
+
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 `;
 
 export const TopRightContainer = styled.div`
   /* display: flex;
   align-items: center;
   justify-content: space-between; */
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 1fr;
 
   justify-content: center;
@@ -69,7 +53,39 @@ export const TopRightContainer = styled.div`
 
   width: 18%;
   min-width: 239px;
-  border: 1px solid gray;
-  position: absolute;
-  right: 0;
+  border: 1px solid gray; */
+  // position: absolute;
+  @media screen and (min-width: 1280px) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid gray;
+    min-width: 239px;
+    position: absolute;
+    right: 0;
+    top: 3.3rem;
+    width: 18%;
+  }
+  display: none;
+`;
+
+export const MobileMenu = styled.div`
+  display: flex;
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
+`;
+
+export const MobileMenuButton = styled(IoListCircleSharp)`
+  margin-top: 2rem;
+  height: 7rem;
+  width: 7rem;
+  color: var(--color-primary);
+
+  &:hover {
+    cursor: pointer;
+  }
 `;

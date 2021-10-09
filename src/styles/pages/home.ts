@@ -13,7 +13,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Section = styled.section`
+export const Hero = styled.section`
   h1 {
     font-size: 9rem;
     font-weight: 400;
