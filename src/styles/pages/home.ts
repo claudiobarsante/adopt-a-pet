@@ -46,5 +46,5 @@ export const Section = styled.section`
 `;
 
 export const Picture = styled.picture`
-  min-width: 668px;
+  //min-width: 668px;
 `;

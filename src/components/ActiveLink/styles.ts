@@ -1,5 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
+type PictureProps = {
+  isActive: boolean;
+};
 export const StyledLink = styled.a`
   color: var(--color-primary);
   font-size: 1.9rem;
@@ -22,8 +25,17 @@ export const StyledLink = styled.a`
   } */
 `;
 export const LinkContainer = styled.div`
-  //display: inline-block;
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
 `;
-export const Picture = styled.picture`
-  // display: block;
+export const Picture = styled.picture<PictureProps>`
+  visibility: hidden;
+  ${(props) =>
+    props.isActive &&
+    css`
+      visibility: visible;
+    `}
 `;

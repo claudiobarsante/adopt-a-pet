@@ -25,20 +25,17 @@ const Navbar = () => {
             quality={75}
           />
         </S.Logo>
-
-        {/* <ActiveLink href="/" name="Página Inicial" /> */}
       </S.LogoContainer>
-      <S.Nav>
+      {/* <S.Nav>
         <Menu />
-      </S.Nav>
-      <S.SignUpContainer>
+      </S.Nav> */}
+      <S.TopRightContainer>
         <ActiveLink href="/account/signup" name="Cadastre-se" />
-      </S.SignUpContainer>
-      <S.LoginContainer>
+
         <Button backgroundColor="black" textColor="white" size="medium">
           Log in
         </Button>
-      </S.LoginContainer>
+      </S.TopRightContainer>
     </S.Header>
   );
 };

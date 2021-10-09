@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
-  display: grid;
+  display: flex;
+  align-items: center;
+  position: relative;
+  /* display: grid;
 
   grid-template-columns: 20% 58% 12% 10%;
 
@@ -12,7 +15,7 @@ export const Header = styled.header`
   background: transparent;
   // color: black;
   height: 12rem;
-  margin-bottom: 3rem;
+  margin-bottom: 3rem; */
   // width: 86.9rem;
 
   /* position: absolute;
@@ -22,16 +25,17 @@ export const Header = styled.header`
   right: 0;
   // --
   z-index: 999; */
-  @media screen and (min-width: 1252px) {
+  /* @media screen and (min-width: 1252px) {
     grid-template-columns: 20% 60% 10% 10%;
-  }
+  } */
 `;
 
 export const LogoContainer = styled.div`
   //border: 1px solid gray;
   // grid-area: logo;
   // justify-content: flex-start;
-  width: 45%;
+  margin: 1rem;
+  width: 10%;
 `;
 
 export const Logo = styled.button`
@@ -53,14 +57,19 @@ export const Nav = styled.nav`
   }
 `;
 
-export const SignUpContainer = styled.div`
-  //border: 1px solid gray;
-  //grid-area: sign-up;
-  min-width: 90px;
-`;
+export const TopRightContainer = styled.div`
+  /* display: flex;
+  align-items: center;
+  justify-content: space-between; */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 
-export const LoginContainer = styled.div`
-  //  border: 1px solid gray;
-  min-width: 111px;
-  //grid-area: login;
+  justify-content: center;
+  align-items: center;
+
+  width: 18%;
+  min-width: 239px;
+  border: 1px solid gray;
+  position: absolute;
+  right: 0;
 `;
