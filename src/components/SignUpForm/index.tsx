@@ -82,63 +82,100 @@ const SignUpForm = () => {
           validationSchema={SignUpSchema}
           onSubmit={(values) => handleSubmit(values)}
         >
-          {({ values, setFieldValue }) => (
+          {({
+            values,
+            setFieldValue,
+            errors,
+            touched,
+            handleChange,
+            handleBlur
+          }) => (
             <Form>
               <Input
-                name="nickname"
-                type="text"
-                placeholder="Apelido"
+                id="nickname"
+                errors={errors.nickname}
                 icon={AiOutlineUser}
-                maxLength={18}
                 label="Como gostaria de ser chamado"
+                maxLength={18}
+                name="nickname"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Apelido"
+                touched={touched.nickname}
+                type="text"
               />
               <S.EmailContainer>
                 <Input
-                  name="email"
-                  type="email"
-                  placeholder="E-mail"
+                  id="email"
+                  errors={errors.email}
                   icon={AiOutlineMail}
-                  maxLength={256}
                   label="E-mail"
+                  maxLength={256}
+                  name="email"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="E-mail"
+                  touched={touched.email}
+                  type="email"
                 />
               </S.EmailContainer>
               <S.PasswordContainer>
                 <Input
-                  name="password"
-                  type="password"
-                  placeholder="Senha"
+                  id="password"
+                  errors={errors.password}
                   icon={AiFillUnlock}
-                  maxLength={50}
                   label="Senha"
+                  maxLength={50}
+                  name="password"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Senha"
+                  touched={touched.password}
+                  type="password"
                 />
 
                 <Input
-                  name="confirmPassword"
-                  type="password"
-                  placeholder="Digite novamente"
+                  id="confirmPassword"
+                  errors={errors.confirmPassword}
                   icon={AiOutlineLock}
-                  maxLength={50}
                   label="Confirme sua senha"
+                  maxLength={50}
+                  name="confirmPassword"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Digite novamente"
+                  touched={touched.confirmPassword}
+                  type="password"
                 />
               </S.PasswordContainer>
               <S.PhoneContainer>
                 <Input
-                  name="phone"
-                  type="text"
-                  placeholder="Telefone"
+                  id="phone"
+                  errors={errors.phone}
                   icon={AiOutlinePhone}
-                  maxLength={15}
                   label="Telefone"
+                  maxLength={15}
+                  name="phone"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Telefone"
+                  touched={touched.phone}
+                  type="text"
                 />
               </S.PhoneContainer>
               <S.ZipcodeContainer>
                 <Input
-                  name="zipcode"
-                  type="number"
-                  placeholder="Cep"
+                  id="zipcode"
+                  errors={errors.zipcode}
                   icon={MdMyLocation}
-                  maxLength={8}
                   label="Cep"
+                  maxLength={8}
+                  name="zipcode"
+                  onBlur={handleBlur}
+                  onChange={handleChange}
+                  placeholder="Cep"
+                  touched={touched.zipcode}
+                  type="number"
                 />
                 <Button
                   backgroundColor="blue"
@@ -156,39 +193,59 @@ const SignUpForm = () => {
                 </Button>
               </S.ZipcodeContainer>
               <Input
-                name="state"
-                type="text"
-                placeholder="Estado"
+                id="state"
+                errors={errors.state}
                 icon={GoLocation}
-                maxLength={50}
                 label="Estado"
-              />
-              <Input
-                name="city"
-                type="text"
-                placeholder="Cidade"
-                icon={MdLocationCity}
-                maxLength={100}
-                label="Cidade"
-              />
-
-              <Input
-                name="neighborhood"
-                type="text"
-                placeholder="Bairro"
-                icon={BiMapPin}
                 maxLength={50}
-                label="Bairro"
+                name="state"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Estado"
+                touched={touched.state}
+                type="text"
+              />
+              <Input
+                id="city"
+                errors={errors.city}
+                icon={MdLocationCity}
+                label="Cidade"
+                maxLength={100}
+                name="city"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Cidade"
+                touched={touched.city}
+                type="text"
               />
 
               <Input
-                name="code"
+                id="neighborhood"
+                errors={errors.neighborhood}
+                icon={BiMapPin}
+                label="Bairro"
+                maxLength={50}
+                name="neighborhood"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="Bairro"
+                touched={touched.neighborhood}
                 type="text"
-                placeholder="UF"
+              />
+
+              <Input
+                id="code"
+                errors={errors.code}
                 icon={BiMapAlt}
-                maxLength={2}
-                label="UF"
                 isUpperCase
+                label="UF"
+                maxLength={2}
+                name="code"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                placeholder="UF"
+                touched={touched.code}
+                type="text"
               />
               <S.ActionsContainer>
                 <Button

@@ -1,6 +1,6 @@
-import React, { InputHTMLAttributes, KeyboardEvent } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { IconBaseProps } from 'react-icons';
-import { useField, ErrorMessage } from 'formik';
+import { ErrorMessage } from 'formik';
 // -- Styles
 import * as S from './styles';
 //import { onlyNumbers } from 'helpers/utils';
@@ -8,6 +8,8 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   isUpperCase?: boolean;
+  errors: string | undefined;
+  touched: boolean | undefined;
   icon?: React.ComponentType<IconBaseProps>; //to receive a component as property
   //and to add the properties from react-icons, must pass type as IconBaseProps
 }
@@ -17,29 +19,21 @@ const Input = ({
   label,
   icon: Icon,
   isUpperCase = false,
+  errors,
+  touched,
   ...rest
 }: Props) => {
-  const [field, meta, helpers] = useField(name);
+  const error = touched && errors ? true : false;
 
-  console.log({ field }, { meta }, { helpers });
-  const error = meta.touched && meta.error ? true : false;
-
-  // const handleOnKeyPress = (event: KeyboardEvent) => {
-  //   onlyNumbers(event);
-  // };
   return (
     <S.ComponentContainer>
       <label htmlFor={name}>{label}</label>
       <S.InputContainer isErrored={error} isUpperCase={isUpperCase}>
         {Icon && <Icon size={24} />}
-        <input
-          {...field}
-          {...rest}
-          //onKeyPress={(event: KeyboardEvent) => handleOnKeyPress(event)}
-        />
+        <input {...rest} />
       </S.InputContainer>
       <S.ErrorContainer isErrored={error}>
-        <ErrorMessage name={field.name} />
+        <ErrorMessage name={name} />
       </S.ErrorContainer>
     </S.ComponentContainer>
   );
