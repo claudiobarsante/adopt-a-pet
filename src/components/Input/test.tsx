@@ -20,6 +20,12 @@ const mockField = {
   initialTouched: false
 };
 
+const mockHelpers = {
+  setValue: jest.fn(),
+  setTouched: jest.fn(),
+  setError: jest.fn()
+};
+
 // // jest.mock('formik', () => {
 // //   return {
 // //     useField() {
@@ -45,31 +51,52 @@ const fieldMock = {};
 const metaMock = {};
 const helperMock = {};
 //jest.mock('formik');
-// jest.mock('formik', () => ({
-//   ...jest.requireActual('formik'),
-//   useField: jest.fn(() => {
-//     return [fieldMock, metaMock, helperMock];
-//   })
-// }));
-
 jest.mock('formik', () => ({
   ...jest.requireActual('formik'),
-  useFormikContext: jest
-    .fn()
-    .mockReturnValue({ isValidating: false, setFieldValue: () => {} })
+  useField: jest.fn(() => {
+    return [mockField, mockMeta, mockHelpers];
+  })
 }));
+
+// jest.mock('formik', () => ({
+//   ...jest.requireActual('formik'),
+//   useFormikContext: jest
+//     .fn()
+//     .mockReturnValue({ isValidating: false, setFieldValue: () => {} })
+// }));
+
+// jest.mock('formik', () => {
+//   return {
+//     useField() {
+//       return [mockField, mockMeta, mockHelpers];
+//     }
+//   };
+// });
 
 const mockComponent = () => <ErrorMessage name="test" />;
 jest.mock('formik', () => () => mockComponent);
 
 describe('<Input />', () => {
   it('should render the input', () => {
+    const mockMeta = {
+      touched: false,
+      error: '',
+      initialError: '',
+      initialTouched: false,
+      initialValue: '',
+      value: ''
+    };
+    const mockField = {
+      value: '',
+      checked: false,
+      onChange: jest.fn(),
+      onBlur: jest.fn(),
+      multiple: undefined,
+      name: 'test'
+    };
     const useFiledMocked = mocked(useField);
-    useFiledMocked.mockReturnValueOnce([
-      mockMeta,
-      mockField,
-      { setValue: jest.fn(), setTouched: jest.fn(), setError: jest.fn() }
-    ]);
+    //  useFiledMocked.mockReturnValueOnce([mockField, mockMeta]);
+    //useField.mockReturnValue([mockField, mockMeta]);
     render(
       <Input
         name="test"

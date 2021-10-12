@@ -19,8 +19,9 @@ const Input = ({
   isUpperCase = false,
   ...rest
 }: Props) => {
-  const [field, meta] = useField(name);
+  const [field, meta, helpers] = useField(name);
 
+  console.log({ field }, { meta }, { helpers });
   const error = meta.touched && meta.error ? true : false;
 
   // const handleOnKeyPress = (event: KeyboardEvent) => {
