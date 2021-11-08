@@ -8,22 +8,18 @@ import ToastContainerWrapper from 'components/ToastContainer';
 import NextNProgress from 'nextjs-progressbar';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { ModalProvider } from 'styled-react-modal';
-
+import { ThemeProvider } from 'styled-components';
 import AppProvider from 'context/index';
+import { themeApp } from 'styles/theme';
 
 function App({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <ThemeProvider theme={themeApp}>
       <Head>
         <title>Adote um Pet</title>
         <link rel="shortcut icon" href="/img/icon-512.png" />
         <link rel="apple-touch-icon" href="/img/icon-512.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-
-        <link
-          href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
 
         <meta name="theme-color" content="#06092B" />
         <meta
@@ -40,7 +36,7 @@ function App({ Component, pageProps }: AppProps) {
         </ModalProvider>
         <ToastContainerWrapper />
       </AppProvider>
-    </>
+    </ThemeProvider>
   );
 }
 

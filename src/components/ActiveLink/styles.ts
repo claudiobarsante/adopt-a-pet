@@ -4,32 +4,24 @@ type PictureProps = {
   isActive: boolean;
 };
 export const StyledLink = styled.a`
-  color: var(--color-primary);
-  font-size: 1.9rem;
-  font-weight: 500;
-
-  &:hover {
-    text-shadow: 0px 0px 0.1px black;
-    cursor: pointer;
-  }
-
-  /* &:active::after {
-    content: '';
-    height: 3px;
-    border-radius: 3px 3px 0 0;
-    width: 100%;
-    position: absolute;
-    bottom: 1px;
-    left: 0;
-    background: var(--color-primary;
-  } */
+  ${({ theme }) => css`
+    color: ${theme.colors.primary};
+    font-size: ${theme.font.sizes.xlarge};
+    font-weight: ${theme.font.semiBold};
+    &:hover {
+      text-shadow: 0px 0px 0.1px black;
+      cursor: pointer;
+    }
+  `}
 `;
 export const LinkContainer = styled.div`
   display: flex;
   flex-direction: column;
-  //justify-content: center;
   align-items: center;
-  margin-top: 2rem;
+
+  ${({ theme }) => css`
+    margin-top: ${theme.spacings.small};
+  `}
 `;
 export const Picture = styled.picture<PictureProps>`
   visibility: hidden;
