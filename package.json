@@ -8,7 +8,10 @@
     "start": "next start",
     "lint": "eslint src --max-warnings=0",
     "test": "jest",
-    "test:watch": "yarn test --watch"
+    "test:watch": "yarn test --watch",
+    "generate": "yarn plop --plopfile generators/plopfile.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "src/**/*": [
@@ -32,12 +35,18 @@
     "react-select": "^4.3.1",
     "react-toastify": "^7.0.4",
     "styled-components": "^5.2.3",
+    "styled-media-query": "^2.1.2",
     "styled-react-modal": "^2.1.0",
     "webpack": "4",
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@babel/core": "^7.16.0",
     "@babel/preset-typescript": "^7.13.0",
+    "@storybook/addon-actions": "^6.3.12",
+    "@storybook/addon-essentials": "^6.3.12",
+    "@storybook/addon-links": "^6.3.12",
+    "@storybook/react": "^6.3.12",
     "@testing-library/dom": "^8.2.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
@@ -46,11 +55,13 @@
     "@types/react": "^17.0.4",
     "@types/react-dropzone": "^5.1.0",
     "@types/react-select": "^4.0.17",
+    "@types/react-test-renderer": "^17.0.1",
     "@types/styled-components": "^5.1.9",
     "@types/styled-react-modal": "^1.2.1",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "babel-jest": "^27.1.0",
+    "babel-loader": "^8.2.3",
     "babel-plugin-styled-components": "^1.12.0",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
@@ -61,7 +72,9 @@
     "jest-dom": "^4.0.0",
     "jest-styled-components": "^7.0.4",
     "lint-staged": "^10.5.4",
+    "plop": "^2.7.6",
     "prettier": "2.2.1",
+    "react-test-renderer": "^17.0.2",
     "ts-jest": "^27.0.5",
     "typescript": "^4.3.5"
   }

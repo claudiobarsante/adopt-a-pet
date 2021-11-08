@@ -27,7 +27,7 @@ import Button from 'components/Button';
 import { useLoading } from 'context/loading';
 import FormLoading from 'components/FormLoading';
 
-type InfoParams = {
+type UserInfoParams = {
   setFieldValue: (
     field: string,
     value: unknown,
@@ -47,7 +47,7 @@ const SignUpForm = () => {
   };
 
   const handleGetInfo = useCallback(
-    async ({ setFieldValue, value, event }: InfoParams) => {
+    async ({ setFieldValue, value, event }: UserInfoParams) => {
       event.preventDefault();
 
       try {
@@ -83,12 +83,12 @@ const SignUpForm = () => {
           onSubmit={(values) => handleSubmit(values)}
         >
           {({
-            values,
-            setFieldValue,
             errors,
-            touched,
+            handleBlur,
             handleChange,
-            handleBlur
+            setFieldValue,
+            touched,
+            values
           }) => (
             <Form>
               <Input

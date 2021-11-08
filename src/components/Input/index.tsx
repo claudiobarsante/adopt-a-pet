@@ -26,9 +26,13 @@ const Input = ({
   const error = touched && errors ? true : false;
 
   return (
-    <S.ComponentContainer>
+    <S.ComponentContainer data-testid="input-test">
       <label htmlFor={name}>{label}</label>
-      <S.InputContainer isErrored={error} isUpperCase={isUpperCase}>
+      <S.InputContainer
+        data-testid="input-container"
+        isErrored={error}
+        isUpperCase={isUpperCase}
+      >
         {Icon && <Icon size={24} />}
         <input {...rest} />
       </S.InputContainer>

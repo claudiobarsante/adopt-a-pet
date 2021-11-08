@@ -12,18 +12,20 @@ import { setContext } from '@apollo/client/link/context';
 import { getBaseInfosService } from 'api/services/formService';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import Context from 'next';
 
-type Content = {
+type DropdownContent = {
   text: string;
   value: string;
 };
+
 type Props = {
-  breeds: Content[];
-  colors: Content[];
-  furs: Content[];
-  sizes: Content[];
-  tempers: Content[];
-  species: Content[];
+  breeds: DropdownContent[];
+  colors: DropdownContent[];
+  furs: DropdownContent[];
+  sizes: DropdownContent[];
+  tempers: DropdownContent[];
+  species: DropdownContent[];
 };
 const PetForm = ({ breeds, colors, furs, sizes, tempers, species }: Props) => {
   return (
@@ -38,7 +40,7 @@ const PetForm = ({ breeds, colors, furs, sizes, tempers, species }: Props) => {
 
 export default PetForm;
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const hasuraEndpoint = createHttpLink({
     uri: 'https://positive-sponge-35.hasura.app/v1/graphql'
   });
@@ -72,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     `
   });
 
-  const breeds = data.breed.map((breed) => ({
+  const breeds = data.breed.map((breed: DropdownContent) => ({
     text: breed.text,
     value: String(breed.value)
   }));
