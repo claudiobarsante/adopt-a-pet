@@ -4,12 +4,12 @@ import { useRouter } from 'next/router';
 import * as S from './styles';
 import underlinePic from '/public/img/underline.png';
 
-type Props = {
+export type ActiveLinkProps = {
   href: string;
   name: string;
 };
 
-const ActiveLink = ({ href, name }: Props) => {
+const ActiveLink = ({ href, name }: ActiveLinkProps) => {
   const { asPath } = useRouter(); //route that you're currently accessing
   /*if the route that you're currently accessing is equal to the href that you're passing as parameter, then the link is active*/
   const isActive = asPath === href;

@@ -4,7 +4,7 @@ import { ErrorMessage } from 'formik';
 // -- Styles
 import * as S from './styles';
 //import { onlyNumbers } from 'helpers/utils';
-interface Props extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   label: string;
   isUpperCase?: boolean;
@@ -22,7 +22,7 @@ const Input = ({
   errors,
   touched,
   ...rest
-}: Props) => {
+}: InputProps) => {
   const error = touched && errors ? true : false;
 
   return (

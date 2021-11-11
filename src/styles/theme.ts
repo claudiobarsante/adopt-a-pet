@@ -6,9 +6,15 @@ export const themeApp = {
   // border: {
   //   radius: '0.4rem'
   // },
+  button: {
+    small: '5.6rem',
+    medium: '6.7rem',
+    large: '8.5rem'
+  },
   font: {
     family:
       "Jost, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+
     light: 300,
     normal: 400,
     semiBold: 500,
@@ -18,8 +24,8 @@ export const themeApp = {
       small: '1.4rem',
       regular: '1.6rem',
       large: '1.8rem',
-      xlarge: '2.0rem',
-      xxlarge: '2.8rem'
+      xLarge: '2.0rem',
+      xxLarge: '2.8rem'
     }
   },
   colors: {
@@ -33,7 +39,9 @@ export const themeApp = {
     mustard: '#ffc32e',
     pink: '#e577ce',
     purple: '#7b74c9',
-    success: '#73bd73'
+    success: '#73bd73',
+    white: '#ffffff',
+    black: '#030517'
   },
   spacings: {
     xxsmall: '0.8rem',

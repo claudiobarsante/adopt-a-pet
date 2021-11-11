@@ -34,7 +34,7 @@ export const Hero = styled.section`
     margin-top: 5rem;
   }
 
-  @media screen and (min-width: 1824px) {
+  /* @media screen and (min-width: 1824px) {
     button {
       width: 30%;
     }
@@ -42,7 +42,7 @@ export const Hero = styled.section`
 
   svg {
     margin-left: 1.5rem;
-  }
+  } */
 `;
 
 export const Picture = styled.picture`

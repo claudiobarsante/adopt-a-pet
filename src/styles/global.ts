@@ -98,18 +98,18 @@ ${({ theme }) => css`
   }
 
   body {
-    font-family: ${theme.font.family}
-    font-size:${theme.font.sizes.regular}
+    font-family: ${theme.font.family};
+    font-size: ${theme.font.sizes.regular};
   }
 
   button {
-	cursor: pointer;
-}
+    cursor: pointer;
+  }
 
-a {
-	color: inherit;
-	text-decoration: none;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 `}
 
 

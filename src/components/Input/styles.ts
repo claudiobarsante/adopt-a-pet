@@ -1,8 +1,15 @@
-import styled, { css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 
 type InputContainerProps = {
   isErrored: boolean;
   isUpperCase?: boolean;
+};
+
+const inputModifiers = {
+  borderWithError: (theme: DefaultTheme) => css`
+    border: 2px solid ${theme.colors.error};
+    transition: border-color 2s, color 2s;
+  `
 };
 export const ComponentContainer = styled.div`
   margin-top: 0.6rem;
@@ -15,25 +22,26 @@ export const ComponentContainer = styled.div`
 `;
 
 export const InputContainer = styled.div<InputContainerProps>`
-  display: flex;
-  align-items: center;
+  ${({ theme }) => css`
+    display: flex;
+    align-items: center;
 
-  // background: var(--color-background-card);
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-  border-radius: 1rem;
-  //border: 2px solid var(--color-background-card);
-  color: var(--color-grey-hard);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 1rem;
 
-  height: 5.6rem;
-  width: 100%;
+    color: ${theme.colors.darkGray};
 
-  padding: 16px;
+    height: 5.6rem;
+    width: 100%;
+
+    padding: 16px;
+  `}
 
   ${(props) =>
     props.isErrored &&
     css`
-      border: 2px solid var(--color-error);
+      border: 2px solid #c53030;
       transition: border-color 2s, color 2s;
     `}
   //--It selects an element if that element contains any children that have :focus

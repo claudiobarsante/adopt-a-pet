@@ -1,50 +1,59 @@
-import styled from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import Image from 'next/image';
+import { ButtonProps } from '.';
+import media from 'styled-media-query';
 
-type ButtonProps = {
-  backgroundColor: 'black' | 'blue' | 'pink' | 'yellow' | 'purple';
-  textColor: 'white' | 'black' | 'blue' | 'pink' | 'yellow' | 'purple';
-  size: 'small' | 'medium' | 'large';
+type ContainerProps = {
+  hasIcon: boolean;
+} & ButtonProps;
+
+const containerModifiers = {
+  withIcon: (theme: DefaultTheme) => css`
+    svg {
+      color: ${theme.colors.white};
+      margin-left: 1.5rem;
+      height: 2.5rem;
+      width: 2.5rem;
+    }
+
+    ${media.lessThan('small')`
+      svg{
+        display:none;
+      }
+    `}
+  `
 };
+export const Container = styled.button<ContainerProps>`
+  ${({ theme, backgroundColor, textColor, size, hasIcon }) => css`
+     {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
 
-const colorMaps = {
-  black: '--color-primary',
-  blue: '--color-light-blue',
-  pink: '--color-pink',
-  purple: '--color-purple',
-  white: '--color-default-button-text',
-  yellow: '--color-mustard'
-};
+      height: ${theme.button[size]};
+      width: 100%;
 
-const sizeMaps = {
-  small: 5.6,
-  medium: 6.7,
-  large: 8.5
-};
+      background: ${theme.colors[backgroundColor]};
+      border-radius: 5rem;
+      border: 0;
+      color: ${theme.colors[textColor]};
 
-export const Container = styled.button<ButtonProps>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+      ${media.lessThan('small')`
+      font-size: ${theme.font.sizes.xsmall};
+    `}
+      font-weight: ${theme.font.normal};
 
-  height: ${(props) => sizeMaps[props.size]}rem;
-  width: 100%;
+      padding: ${theme.spacings.medium};
+      text-align: center;
 
-  background: var(${(props) => colorMaps[props.backgroundColor]});
-  border-radius: 5rem;
-  border: 0;
-  color: var(${(props) => colorMaps[props.textColor]});
-  font-size: 1.8rem;
-  font-weight: 400;
-  //letter-spacing: 0.2rem;
-  //margin-top: 10.4rem;
-  padding: 3rem;
-  text-align: center;
+      transition: filter 0.2s;
 
-  transition: filter 0.2s;
+      &:hover {
+        filter: brightness(0.9);
+      }
 
-  &:hover {
-    filter: brightness(0.9);
-  }
+      ${hasIcon && containerModifiers.withIcon(theme)}
+    }
+  `}
 `;

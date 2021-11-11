@@ -12,8 +12,13 @@ export default function Home() {
           <h1>Abra seu coração</h1>
           <h2>para um amigo na sua vida.</h2>
           <p>Pensando em adotar um pet ?</p>
-          <Button backgroundColor="black" textColor="white" size="medium">
-            Comece por aqui <FaPaw />
+          <Button
+            backgroundColor="black"
+            textColor="white"
+            size="medium"
+            icon={<FaPaw />}
+          >
+            Comece por aqui
           </Button>
         </S.Hero>
         <S.Picture>
