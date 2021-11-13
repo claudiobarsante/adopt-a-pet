@@ -15,7 +15,7 @@ export const StyledLink = styled.a`
     }
   `}
 `;
-export const LinkContainer = styled.div`
+export const LinkContainer = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;

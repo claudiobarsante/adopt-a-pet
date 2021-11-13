@@ -1,15 +1,17 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes, css } from 'styled-components';
 import { IoListCircleSharp } from 'react-icons/io5';
+import media from 'styled-media-query';
 
-export const Header = styled.header`
+export const Nav = styled.nav`
   display: none;
+  border: 1px solid yellow;
+  ${media.greaterThan('large')`
+  display: flex;
+  align-items: center;
 
-  @media screen and (min-width: 1280px) {
-    display: flex;
-    align-items: center;
+  position: relative;
 
-    position: relative;
-  }
+  `}
 `;
 
 export const LogoContainer = styled.div`
@@ -23,39 +25,33 @@ export const Logo = styled.button`
   border: 0;
 `;
 
-export const Nav = styled.div`
-  //border: 1px solid gray;
-`;
-
-export const TopRightContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  justify-content: center;
+export const TopRightContainer = styled.ul`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 
-  // border: 1px solid gray;
-  min-width: 239px;
+  border: 1px solid red;
+  list-style: none;
   position: absolute;
   right: 0;
-  top: 3.3rem;
-  width: 18%;
+  width: 20%;
+  min-width: 240px;
 `;
 
 export const MobileMenu = styled.div`
   display: flex;
-  @media screen and (min-width: 1280px) {
-    display: none;
-  }
+  ${media.greaterThan('large')`display: none;`}
 `;
 
 export const MobileMenuButton = styled(IoListCircleSharp)`
-  margin-top: 2rem;
-  height: 7rem;
-  width: 7rem;
-  color: var(--color-primary);
+  ${({ theme }) => css`
+    margin-top: 2rem;
+    height: 7rem;
+    width: 7rem;
+    color: ${theme.colors.primary};
 
-  &:hover {
-    cursor: pointer;
-  }
+    &:hover {
+      cursor: pointer;
+    }
+  `}
 `;

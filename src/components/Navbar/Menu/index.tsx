@@ -8,7 +8,7 @@ const Menu = () => {
       <ActiveLink href="/services" name="Serviços" />
       <ActiveLink href="/articles" name="Artigos" />
       <ActiveLink href="/stories" name="Histórias de Sucesso" />
-      <ActiveLink href="/articles" name="Artigos" />
+      <ActiveLink href="/outros" name="Outros" />
     </S.LinksContainer>
   );
 };

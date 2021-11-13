@@ -6,7 +6,6 @@ import * as S from './styles';
 import Image from 'next/image';
 import picKitten from '/public/img/kitten.png';
 import { useRouter } from 'next/router';
-import { IoListCircleSharp } from 'react-icons/io5';
 
 const Navbar = () => {
   const router = useRouter();
@@ -21,7 +20,7 @@ const Navbar = () => {
 
   return (
     <>
-      <S.Header>
+      <S.Nav>
         <S.LogoContainer>
           <S.Logo onClick={handleLogoClick}>
             <Image
@@ -32,17 +31,18 @@ const Navbar = () => {
             />
           </S.Logo>
         </S.LogoContainer>
-        <S.Nav>
-          <Menu />
-        </S.Nav>
+
+        <Menu />
+
         <S.TopRightContainer>
           <ActiveLink href="/account/signup" name="Cadastre-se" />
-
-          <Button backgroundColor="black" textColor="white" size="medium">
-            Log in
-          </Button>
+          <li>
+            <Button backgroundColor="black" textColor="white" size="medium">
+              Log in
+            </Button>
+          </li>
         </S.TopRightContainer>
-      </S.Header>
+      </S.Nav>
       <S.MobileMenu>
         <S.MobileMenuButton onClick={handleMobileMenuClick} />
       </S.MobileMenu>

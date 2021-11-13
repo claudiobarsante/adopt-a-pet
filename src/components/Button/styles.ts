@@ -38,6 +38,7 @@ export const Container = styled.button<ContainerProps>`
       border-radius: 5rem;
       border: 0;
       color: ${theme.colors[textColor]};
+      font-size: ${theme.font.sizes.large};
 
       ${media.lessThan('small')`
       font-size: ${theme.font.sizes.xsmall};
