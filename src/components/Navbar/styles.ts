@@ -22,7 +22,11 @@ export const LogoContainer = styled.div`
 
 export const Logo = styled.button`
   background: transparent;
-  border: 0;
+  border: 1px solid green;
+
+  svg {
+    color: red;
+  }
 `;
 
 export const TopRightContainer = styled.ul`
