@@ -178,7 +178,7 @@ const SignUpForm = () => {
                   type="number"
                 />
                 <Button
-                  backgroundColor="blue"
+                  backgroundColor="lightBlue"
                   textColor="white"
                   size="small"
                   onClick={(event) =>
@@ -258,7 +258,7 @@ const SignUpForm = () => {
                   {isLoading ? <FormLoading /> : <span>Cadastrar</span>}
                 </Button>
                 <Button
-                  backgroundColor="yellow"
+                  backgroundColor="mustard"
                   textColor="white"
                   size="medium"
                   type="reset"

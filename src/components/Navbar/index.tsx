@@ -6,8 +6,10 @@ import * as S from './styles';
 import Image from 'next/image';
 import picKitten from '/public/img/kitten.png';
 import { useRouter } from 'next/router';
+import { useUser } from '@auth0/nextjs-auth0';
 
 const Navbar = () => {
+  const { user, isLoading } = useUser();
   const router = useRouter();
 
   const handleLogoClick = useCallback(() => {
@@ -17,6 +19,10 @@ const Navbar = () => {
   const handleMobileMenuClick = () => {
     console.log('cli');
   };
+
+  const handleLogIn = useCallback(() => {
+    router.push('/api/auth/login');
+  }, [router]);
 
   return (
     <>
@@ -37,7 +43,12 @@ const Navbar = () => {
         <S.TopRightContainer>
           <ActiveLink href="/account/signup" name="Cadastre-se" />
           <li>
-            <Button backgroundColor="black" textColor="white" size="medium">
+            <Button
+              backgroundColor="black"
+              textColor="white"
+              size="medium"
+              onClick={handleLogIn}
+            >
               Log in
             </Button>
           </li>

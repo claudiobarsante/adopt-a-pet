@@ -11,6 +11,7 @@ import { ModalProvider } from 'styled-react-modal';
 import { ThemeProvider } from 'styled-components';
 import AppProvider from 'context/index';
 import { themeApp } from 'styles/theme';
+import { UserProvider } from '@auth0/nextjs-auth0';
 
 function App({ Component, pageProps }: AppProps) {
   return (
@@ -29,13 +30,13 @@ function App({ Component, pageProps }: AppProps) {
       </Head>
       <GlobalStyles />
 
-      <AppProvider>
+      <UserProvider>
         <Navbar />
         <ModalProvider>
           <Component {...pageProps} />
         </ModalProvider>
         <ToastContainerWrapper />
-      </AppProvider>
+      </UserProvider>
     </ThemeProvider>
   );
 }

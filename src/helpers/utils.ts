@@ -1,5 +1,10 @@
 import { KeyboardEvent } from 'react';
-export const BRAZIL_STATES: { [uf: string]: string } = {
+
+type BrazilState = {
+  [uf: string]: string;
+};
+
+export const BRAZIL_STATES: BrazilState = {
   AC: 'Acre',
   AL: 'Alagoas',
   AP: 'Amapá',
